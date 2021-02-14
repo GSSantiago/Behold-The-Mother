@@ -18,6 +18,12 @@ public class Flashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+        diff.Normalize();
+
+        float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+
         if(Input.GetKeyDown("f") && mode==0)
         {
             luz.pointLightOuterAngle = 95;
@@ -32,6 +38,11 @@ public class Flashlight : MonoBehaviour
             luz.pointLightInnerAngle = 360;
             luz.pointLightOuterRadius = 4.8f;
             mode = 0;
+        }
+
+        if(mode == 1)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationZ-90f);
         }
     }
 }
