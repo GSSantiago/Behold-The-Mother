@@ -28,7 +28,8 @@ public class Flashlight : MonoBehaviour
         {
             luz.pointLightOuterAngle = 95;
             luz.pointLightInnerAngle = 30;
-            luz.pointLightOuterRadius = 9;
+            luz.pointLightInnerRadius = 2f;
+            luz.pointLightOuterRadius = 9f;
             mode = 1;
         }
 
@@ -36,6 +37,7 @@ public class Flashlight : MonoBehaviour
         {
             luz.pointLightOuterAngle = 360;
             luz.pointLightInnerAngle = 360;
+            luz.pointLightInnerRadius = 1.2f;
             luz.pointLightOuterRadius = 4.8f;
             mode = 0;
         }
