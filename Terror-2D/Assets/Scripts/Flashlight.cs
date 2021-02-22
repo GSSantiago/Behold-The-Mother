@@ -5,11 +5,10 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class Flashlight : MonoBehaviour
 {
     int mode = 0;
-    Light2D luz;
+    public Light2D luz;
     // Start is called before the first frame update
     void Start()
     {
-        luz = GetComponent<Light2D>();
         luz.pointLightOuterAngle = 360;
         luz.pointLightInnerAngle = 360;
         luz.pointLightOuterRadius = 4.8f;
