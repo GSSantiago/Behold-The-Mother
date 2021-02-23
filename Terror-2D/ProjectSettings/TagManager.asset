@@ -15,7 +15,7 @@ TagManager:
   - 
   - Player
   - Foreground
-  - 
+  - Ligth
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: "Parede(Colis\xE3o)"
+    uniqueID: 3575775867
+    locked: 0
+  - name: "Parede(semColis\xE3o)"
+    uniqueID: 3012197497
     locked: 0
