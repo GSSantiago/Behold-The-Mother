@@ -10,6 +10,7 @@ public class TransparentWalls : MonoBehaviour
     private Tilemap tilemap;
     private SpriteMask mySM;
     private bool inside = false;
+    private bool done = true;
     //private float previousAlpha = 1;
     private float t = 0;
     public float duration = 1; //Duração em segundos da transição
@@ -29,31 +30,36 @@ public class TransparentWalls : MonoBehaviour
     void Update()
     {
         if(inside){
-             tilemap.color = Color.Lerp(Color.white, transparency, t);
+             tilemap.color = Color.Lerp(tilemap.color, transparency, t);
              if(t<1){
                  t += Time.deltaTime/duration;
              }
         }else{
-            tilemap.color = Color.Lerp(transparency, Color.white, t);
-            if(t<1){
-                t += Time.deltaTime/duration;
-            }else{
-                mySM.enabled = false;
+            if(!done){
+                tilemap.color = Color.Lerp(tilemap.color, Color.white, t);
+                if(t<1){
+                    t += Time.deltaTime/duration;
+                }else{
+                    mySM.enabled = false;
+                    done = true;
+                }
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player"){
+            //tilemap.color = Color.white;
             mySM.enabled = true;
             inside = true;
+            done = false;
             t=0;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player"){
-            tilemap.color = Color.white;
+            //tilemap.color = transparency;
             inside = false;
             t=0;
         }
