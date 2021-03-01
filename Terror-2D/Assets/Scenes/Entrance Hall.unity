@@ -658,7 +658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c3c860704062d4d8b552db056bfb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySM: {fileID: 53135208}
   duration: 2
 --- !u!60 &53135210
 PolygonCollider2D:
@@ -9571,7 +9570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c3c860704062d4d8b552db056bfb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySM: {fileID: 443256647}
   duration: 1
 --- !u!43 &516066691
 Mesh:
@@ -10082,7 +10080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c3c860704062d4d8b552db056bfb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySM: {fileID: 647414582}
   duration: 2
 --- !u!1 &670738673
 GameObject:
@@ -38544,7 +38541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c3c860704062d4d8b552db056bfb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySM: {fileID: 1399038690}
   duration: 1
 --- !u!1 &1402520101
 GameObject:
@@ -39058,7 +39054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c3c860704062d4d8b552db056bfb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySM: {fileID: 1571084945}
   duration: 1
 --- !u!1 &1632860070
 GameObject:
@@ -50321,7 +50316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c3c860704062d4d8b552db056bfb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySM: {fileID: 2015670418}
   duration: 1
 --- !u!1 &2045752497
 GameObject:
