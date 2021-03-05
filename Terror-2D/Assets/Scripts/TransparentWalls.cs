@@ -13,7 +13,7 @@ public class TransparentWalls : MonoBehaviour
     private bool done = true;
     //private float previousAlpha = 1;
     private float t = 0;
-    public float duration = 1; //Duração em segundos da transição
+    public float duration = 0.5f; //Duração em segundos da transição
     private Color transparency = new Color(1f, 1f, 1f, 0.2f);
     private void Awake() {
         Instance = this;
