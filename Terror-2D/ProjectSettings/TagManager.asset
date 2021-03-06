@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BaseParede
+    uniqueID: 2427532275
+    locked: 0
   - name: "Parede(Colis\xE3o)"
     uniqueID: 3575775867
     locked: 0
