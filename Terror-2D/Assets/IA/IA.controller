@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrulha: {fileID: 0}
   fov: {fileID: 0}
+  PerseguicaoSom: {fileID: 0}
 --- !u!114 &-1971021123100678189
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,7 +165,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: IA
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Isperseguindo
@@ -172,13 +173,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Ispatrulhando
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
