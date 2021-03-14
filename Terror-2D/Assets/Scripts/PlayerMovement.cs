@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-
     public Rigidbody2D rb;
+
+    public Animator anim;
+   // public float speed;
 
     Vector2 movement;
 
@@ -16,12 +18,18 @@ public class PlayerMovement : MonoBehaviour
         // Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        anim.SetFloat("Horizontal", movement.x);
+        anim.SetFloat("Vertical", movement.y);
+        anim.SetFloat("Speed", movement.magnitude);
+
     }
 
     void FixedUpdate() 
     {
         // Movimento
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
 
     }
 }
