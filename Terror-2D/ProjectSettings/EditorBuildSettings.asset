@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Entrance Hall.unity
+    guid: 52f1214022784e747bf6f8d74916383b
+  - enabled: 1
+    path: Assets/Scenes/West Wing.unity
+    guid: 554ec4afb82323e4b9476c71eade5cd0
+  - enabled: 1
+    path: Assets/Scenes/Upper West Wing.unity
+    guid: 667118ef34b0aea41a4cf4dfccaf901a
   m_configObjects: {}
