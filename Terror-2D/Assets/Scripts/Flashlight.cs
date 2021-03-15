@@ -10,6 +10,8 @@ public class Flashlight : MonoBehaviour
     public float timeCounter;
     public float intensityCounter;
     public bool flicker = false;
+    public GameObject player;
+    [HideInInspector] public Vector3 pos;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +19,19 @@ public class Flashlight : MonoBehaviour
         luz.pointLightOuterAngle = 360;
         luz.pointLightInnerAngle = 360;
         luz.pointLightOuterRadius = 4.8f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //posicao padrao da lanterna
+        pos = player.transform.position;
+        pos.x += 0.55f;
+        pos.y += 0.10f;
+        luz.transform.position = pos;
+
+
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         diff.Normalize();
@@ -48,6 +58,34 @@ public class Flashlight : MonoBehaviour
         if(flicker == false) {
             StartCoroutine(lightFlicker());
         }
+
+        if(Input.GetKey(KeyCode.A))
+        {
+            //posicao da lanterna para a esqueda
+            pos = player.transform.position;
+            pos.x -= 0.55f;
+            pos.y += 0.10f;
+            luz.transform.position = pos;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            //posicao da lanterna para cima
+            pos = player.transform.position;
+            pos.x -= 0.20f;
+            pos.y += 0.45f;
+            luz.transform.position = pos;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            //posicao da lanterna para baixo
+            pos = player.transform.position;
+            pos.x += 0.20f;
+            pos.y -= 0.15f;
+            luz.transform.position = pos;
+        }
+
     }
 
     void mode0()
