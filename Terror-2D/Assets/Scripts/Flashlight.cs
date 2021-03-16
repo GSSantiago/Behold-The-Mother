@@ -16,6 +16,7 @@ public class Flashlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //modo padrão da luz
         luz.pointLightOuterAngle = 360;
         luz.pointLightInnerAngle = 360;
         luz.pointLightOuterRadius = 4.8f;
@@ -25,17 +26,21 @@ public class Flashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //inputs
+        bool tecla_w = Input.GetKey(KeyCode.W);
+        bool tecla_a = Input.GetKey(KeyCode.A);
+        bool tecla_s = Input.GetKey(KeyCode.S);
+        bool tecla_d = Input.GetKey(KeyCode.D);
+
         //posicao padrao da lanterna
         pos = player.transform.position;
         pos.x += 0.55f;
         pos.y += 0.10f;
         luz.transform.position = pos;
 
-
+        //encontra a direção do mouse na tela
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
         diff.Normalize();
-
         float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
         if(Input.GetKeyDown("f") && mode==0)
@@ -52,6 +57,7 @@ public class Flashlight : MonoBehaviour
 
         if(mode == 1)
         {
+            //aponta a luz para onde o mouse está
             transform.rotation = Quaternion.Euler(0f, 0f, rotationZ-90f);
         }
 
@@ -59,7 +65,7 @@ public class Flashlight : MonoBehaviour
             StartCoroutine(lightFlicker());
         }
 
-        if(Input.GetKey(KeyCode.A))
+        if(tecla_a/* && !tecla_s && !tecla_w*/)
         {
             //posicao da lanterna para a esqueda
             pos = player.transform.position;
@@ -68,7 +74,7 @@ public class Flashlight : MonoBehaviour
             luz.transform.position = pos;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (tecla_w && !tecla_a && !tecla_s && !tecla_d)
         {
             //posicao da lanterna para cima
             pos = player.transform.position;
@@ -77,7 +83,7 @@ public class Flashlight : MonoBehaviour
             luz.transform.position = pos;
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (tecla_s && !tecla_a && !tecla_w && !tecla_d)
         {
             //posicao da lanterna para baixo
             pos = player.transform.position;
@@ -106,6 +112,7 @@ public class Flashlight : MonoBehaviour
 
     IEnumerator lightFlicker()
     {
+        //função para animação de 'fogo'
         flicker = true;
 
         for (i = 0; i< 5; i++)
