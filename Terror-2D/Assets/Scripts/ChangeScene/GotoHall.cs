@@ -10,8 +10,10 @@ public class GotoHall : MonoBehaviour
     AsyncOperation asyncOperation;
     void Start()
     {
-      
+
+
         StartCoroutine(LoadYourAsyncScene());
+
 
     }
 
@@ -28,6 +30,9 @@ public class GotoHall : MonoBehaviour
             asyncOperation.allowSceneActivation = true;
 
         }
+        
+            
+
     }
 
     IEnumerator LoadYourAsyncScene()
@@ -36,9 +41,9 @@ public class GotoHall : MonoBehaviour
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
+        asyncOperation.allowSceneActivation = false;
 
         asyncOperation = SceneManager.LoadSceneAsync("Entrance Hall");
-        asyncOperation.allowSceneActivation = false;
 
         // Wait until the asynchronous scene fully loads
         while (!asyncOperation.isDone)

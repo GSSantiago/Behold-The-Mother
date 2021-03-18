@@ -11,15 +11,19 @@ public class Flashlight : MonoBehaviour
     public float intensityCounter;
     public bool flicker = false;
     public GameObject player;
+    public PlayerMovement PlayerMove;
     [HideInInspector] public Vector3 pos;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        PlayerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         //modo padrão da luz
         luz.pointLightOuterAngle = 360;
         luz.pointLightInnerAngle = 360;
         luz.pointLightOuterRadius = 4.8f;
+
 
     }
 
@@ -32,11 +36,7 @@ public class Flashlight : MonoBehaviour
         bool tecla_s = Input.GetKey(KeyCode.S);
         bool tecla_d = Input.GetKey(KeyCode.D);
 
-        //posicao padrao da lanterna
-        pos = player.transform.position;
-        pos.x += 0.55f;
-        pos.y += 0.10f;
-        luz.transform.position = pos;
+        
 
         //encontra a direção do mouse na tela
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -65,7 +65,7 @@ public class Flashlight : MonoBehaviour
             StartCoroutine(lightFlicker());
         }
 
-        if(tecla_a/* && !tecla_s && !tecla_w*/)
+        if(PlayerMove.moveDir.x == -1)
         {
             //posicao da lanterna para a esqueda
             pos = player.transform.position;
@@ -73,8 +73,16 @@ public class Flashlight : MonoBehaviour
             pos.y += 0.10f;
             luz.transform.position = pos;
         }
+        if (PlayerMove.moveDir.x == 1)
+        {
+            //posicao padrao da lanterna
+            pos = player.transform.position;
+            pos.x += 0.55f;
+            pos.y += 0.10f;
+            luz.transform.position = pos;
+        }
 
-        if (tecla_w && !tecla_a && !tecla_s && !tecla_d)
+        if (PlayerMove.moveDir.y == 1)
         {
             //posicao da lanterna para cima
             pos = player.transform.position;
@@ -83,7 +91,7 @@ public class Flashlight : MonoBehaviour
             luz.transform.position = pos;
         }
 
-        if (tecla_s && !tecla_a && !tecla_w && !tecla_d)
+        if (PlayerMove.moveDir.y == -1)
         {
             //posicao da lanterna para baixo
             pos = player.transform.position;

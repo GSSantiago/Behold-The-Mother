@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 8b77bfa9cbc52fb40b07696e395ffaca
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7258447933056654094
+    second: idle_L
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -313,6 +316,27 @@ TextureImporter:
       bones: []
       spriteID: 9ae8fd2f800096430800000000000000
       internalID: 3776549800961347241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_L
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 291
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f46d71df00d44b90800000000000000
+      internalID: -7258447933056654094
       vertices: []
       indices: 
       edges: []
