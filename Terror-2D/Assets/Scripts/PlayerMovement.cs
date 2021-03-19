@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    private float moveSpeed = 5f;
+    public float normalSpeed =5f;
+    public float runSpeed = 8f;
     public Rigidbody2D rb;
     public Animator anim;
 
@@ -64,13 +66,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Running
                 anim.SetBool("Isrun", true);
-                moveSpeed = 8f;//Aumentando a velocidade
+                moveSpeed = runSpeed;//Aumentando a velocidade
             }
             else
             {
                 //Not Running
                 anim.SetBool("Isrun", false);
-                moveSpeed = 5f;//Definindo a velocidade para o padrão
+                moveSpeed = normalSpeed;//Definindo a velocidade para o padrï¿½o
             }
 
             lastmoveDir = moveDir;

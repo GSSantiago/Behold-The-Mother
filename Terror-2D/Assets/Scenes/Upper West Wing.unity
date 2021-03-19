@@ -42200,6 +42200,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3581315486759549722, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1046239343}
+    - target: {fileID: 3581315486759549722, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1046239342}
+    - target: {fileID: 3581315486759549722, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
+        type: 3}
+      propertyPath: runSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581315486759549722, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
+        type: 3}
+      propertyPath: normalSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8532628531655416865, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
         type: 3}
       propertyPath: m_RootOrder
@@ -66806,6 +66826,18 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1046239342 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8532628531655416866, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 507255310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1046239343 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8532628531655416870, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 507255310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1046239346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8532628531655416865, guid: ebd69fd1dd4dda04cbe9eb36907567e3,
