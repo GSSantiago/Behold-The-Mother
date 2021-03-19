@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
 
+
     public Vector2 moveDir;
     bool isIdle;
 
@@ -20,10 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-
-    // Input
-    //movement.x = Input.GetAxisRaw("Horizontal");
-       // movement.y = Input.GetAxisRaw("Vertical");
 
     // Update is called once per frame
     void Update()
@@ -43,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             movement.x = +1f;
 
+       
+
         moveDir = new Vector3(movement.x, movement.y).normalized;
 
      
@@ -54,11 +53,26 @@ public class PlayerMovement : MonoBehaviour
             //Idle
             rb.velocity = Vector2.zero;
             anim.SetBool("Ismove", false);
+            anim.SetBool("Isrun", false);
         }
 
         else
         {
             //Moving
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                //Running
+                anim.SetBool("Isrun", true);
+                moveSpeed = 8f;//Aumentando a velocidade
+            }
+            else
+            {
+                //Not Running
+                anim.SetBool("Isrun", false);
+                moveSpeed = 5f;//Definindo a velocidade para o padrão
+            }
+
             lastmoveDir = moveDir;
             rb.velocity = moveDir * moveSpeed;
 
@@ -70,10 +84,4 @@ public class PlayerMovement : MonoBehaviour
       
     }
 
-    void FixedUpdate() 
-    {
-       
-
-
-    }
 }
