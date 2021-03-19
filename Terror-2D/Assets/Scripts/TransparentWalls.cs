@@ -5,14 +5,22 @@ using UnityEngine.Tilemaps;
 
 public class TransparentWalls : MonoBehaviour
 {
+    //Referências externas
     public static TransparentWalls Instance;
     private GameObject tWalls; //Paredes transparentes
     private Tilemap tilemap;
     private SpriteMask mySM;
+        //Portas
+        public int numPortas = 1; //Número de portas associadas à essa colisão
+        public GameObject[] portas; //Paredes da sala
+        private SpriteRenderer srPorta1;
+        //public GameObject porta2; //Paredes da sala
+
+    //Variáveis
     private bool inside = false;
-    private bool done = true;
+    private bool done = true; //Indica se a transição foi concluída
     //private float previousAlpha = 1;
-    private float t = 0;
+    private float t = 0; //Usado pelo lerp()
     public float duration = 0.5f; //Duração em segundos da transição
     private Color transparency = new Color(1f, 1f, 1f, 0.2f);
     private void Awake() {
@@ -20,10 +28,23 @@ public class TransparentWalls : MonoBehaviour
     }
     void Start()
     {
+        // Início tilemap
         tWalls = GameObject.FindGameObjectWithTag("ALTURATRANSPARENCIA");
         tilemap = tWalls.GetComponent<Tilemap>();
         mySM = GetComponent<SpriteMask>();
         mySM.enabled = false;
+
+        // Início portas
+        portas = new GameObject[numPortas];
+        for(int i = 0; i < numPortas; i++){
+        }
+    }
+
+    private void OnValidate() {
+        if(portas.Length != numPortas)
+        {
+            //Array.Resize(ref portas, numPortas);
+        }
     }
 
     // Update is called once per frame
@@ -49,7 +70,6 @@ public class TransparentWalls : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player"){
-            //tilemap.color = Color.white;
             mySM.enabled = true;
             inside = true;
             done = false;
@@ -59,7 +79,6 @@ public class TransparentWalls : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player"){
-            //tilemap.color = transparency;
             inside = false;
             t=0;
         }
