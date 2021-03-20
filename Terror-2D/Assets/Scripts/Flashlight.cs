@@ -6,7 +6,7 @@ public class Flashlight : MonoBehaviour
 {
     int mode = 0;
     public Light2D luz;
-    public int i = 0;
+    [HideInInspector]public int i = 0;
     public float timeCounter;
     public float intensityCounter;
     public bool flicker = false;

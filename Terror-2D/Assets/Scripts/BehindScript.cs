@@ -1,30 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class BehindScript : MonoBehaviour
 {
-    public Tilemap tmap;
+    public Light2D luz;
+    public BoxCollider2D coll;
 
     void Start()
     {
+        luz.shadowIntensity = 1;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "baseParede")
         {
-           tmap.color = new Color(1f, 1f, 1f, 0.4f);
+            luz.shadowIntensity = 0;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "baseParede")
         {
-            tmap.color = new Color(1f, 1f, 1f, 1f);
+            luz.shadowIntensity = 1;
         }
     }
 

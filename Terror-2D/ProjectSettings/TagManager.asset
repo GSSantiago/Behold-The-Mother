@@ -8,6 +8,7 @@ TagManager:
   - Light
   - Enemy
   - FOV
+  - baseParede
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: "Parede(semColis\xE3o)"
     uniqueID: 3012197497
+    locked: 0
+  - name: Player
+    uniqueID: 646073627
     locked: 0
