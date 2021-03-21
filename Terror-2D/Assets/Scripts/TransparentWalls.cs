@@ -10,11 +10,10 @@ public class TransparentWalls : MonoBehaviour
     private GameObject tWalls; //Paredes transparentes
     private Tilemap tilemap;
     private SpriteMask mySM;
-        //Portas
+        /*TODO://Portas
         public int numPortas = 1; //Número de portas associadas à essa colisão
         public GameObject[] portas; //Paredes da sala
-        private SpriteRenderer srPorta1;
-        //public GameObject porta2; //Paredes da sala
+        private SpriteRenderer[] srPortas;*/
 
     //Variáveis
     private bool inside = false;
@@ -34,17 +33,15 @@ public class TransparentWalls : MonoBehaviour
         mySM = GetComponent<SpriteMask>();
         mySM.enabled = false;
 
-        // Início portas
+        /*TODO:// Início portas
         portas = new GameObject[numPortas];
         for(int i = 0; i < numPortas; i++){
+            portas[i] = 
         }
-    }
-
-    private void OnValidate() {
-        if(portas.Length != numPortas)
-        {
-            //Array.Resize(ref portas, numPortas);
-        }
+        srPortas = new SpriteRenderer[numPortas];
+        for(int i = 0; i < numPortas; i++){
+            srPortas[i] = portas[i].GetComponent<SpriteRenderer>();
+        }*/
     }
 
     // Update is called once per frame
