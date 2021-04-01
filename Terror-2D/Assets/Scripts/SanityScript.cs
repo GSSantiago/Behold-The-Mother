@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SanityScript : MonoBehaviour
 {
-    float sanity_value;
+    public float sanity_value;
     public Image sanity_image;
     Color cor_atual;
     bool ciclo = false;
@@ -26,7 +26,6 @@ public class SanityScript : MonoBehaviour
         if(Input.GetKey("h"))
         {
             sanity_value += 0.01f;
-            Debug.Log(sanity_value);
 
         }
 
