@@ -44,7 +44,7 @@ public class Porta : MonoBehaviour
         if(t < 1000)
             t++;
         if(inside){
-            if (Input.GetKeyDown(KeyCode.E) && t > 30){
+            if (Input.GetKeyDown(KeyCode.E) && t > 50){
                 t=0;
                 myAnim.SetBool("Interagido", true);
                 mySRClosed.enabled = !mySRClosed;
