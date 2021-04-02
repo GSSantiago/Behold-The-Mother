@@ -16,7 +16,7 @@ public class Porta : MonoBehaviour
     private bool open;
 
     public int time;
-    private int t;
+    private float t;
 
     // Start is called before the first frame update
     void Start()
@@ -42,9 +42,9 @@ public class Porta : MonoBehaviour
     void Update()
     {
         if(t < 1000)
-            t++;
+            t += 60*Time.deltaTime;
         if(inside){
-            if (Input.GetKeyDown(KeyCode.E) && t > 50){
+            if (Input.GetKeyDown(KeyCode.E) && t > 35){
                 t=0;
                 myAnim.SetBool("Interagido", true);
                 mySRClosed.enabled = !mySRClosed;
