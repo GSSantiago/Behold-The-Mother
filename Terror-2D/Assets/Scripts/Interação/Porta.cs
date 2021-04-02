@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,10 @@ public class Porta : MonoBehaviour
     private SpriteRenderer mySROpen;
     private SpriteRenderer mySRClosed;
 
+    private AudioSource myAS;
+    public AudioClip acOpen;
+    public AudioClip acClose;
+
     private bool inside;
     private bool open;
 
@@ -24,7 +28,8 @@ public class Porta : MonoBehaviour
         myGlowClosed = this.gameObject.transform.GetChild(0).gameObject;
         myAnim = this.gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>();
         myGlowOpen = this.gameObject.transform.GetChild(2).gameObject;
-
+        
+        myAS = GetComponent<AudioSource>();
         interactionArea = GetComponent<Collider2D>();
         collision = myGlowClosed.GetComponent<Collider2D>();
         mySROpen = myGlowOpen.GetComponent<SpriteRenderer>();
@@ -50,6 +55,12 @@ public class Porta : MonoBehaviour
                 mySRClosed.enabled = !mySRClosed;
                 mySROpen.enabled = !mySROpen;
                 open = !open;
+                myAS.pitch = Random.Range(1f, 3f);
+                if(open){
+                    myAS.PlayOneShot(acOpen, Random.Range(0.8f, 1f));
+                }else{
+                    myAS.PlayOneShot(acClose, Random.Range(0.8f, 1f));
+                }
             }
             else if(t > 30){
                 myAnim.SetBool("Interagido", false);
