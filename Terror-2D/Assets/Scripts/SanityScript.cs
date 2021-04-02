@@ -9,40 +9,41 @@ public class SanityScript : MonoBehaviour
     public Image sanity_image;
     Color cor_atual;
     bool ciclo = false;
-    int i;
+    int i, j;
     float timeCounter;
+    int repeticoes;
 
     void Start()
     {
         //imagem padrão, com a sanidade em nível normal
-        sanity_value = 0;
+        sanity_value = 1;
         cor_atual = Color.white;
-        cor_atual.a = sanity_value;
+        cor_atual.a = (1 - sanity_value);
         sanity_image.color = cor_atual;
     }
 
     void Update()
     {
-        if(Input.GetKey("h"))
+        if (Input.GetKey("h"))
         {
-            sanity_value += 0.01f;
-
+            sanity_value -= 0.01f;
         }
 
-        if(sanity_value >= 1)
+        if(sanity_value <= 0)
         {
-            sanity_value = 0;
+            sanity_value = 1;
         }
 
+        
         //criando intervalos de valores e respectivos tempos para as pulsações
         if (sanity_value < 0.2)
         {
-            timeCounter = 0.1f;
+            timeCounter = 0.001f;
         } 
         
         else if (sanity_value < 0.4)
         {
-            timeCounter = 0.05f;
+            timeCounter = 0.005f;
         } 
         
         else if(sanity_value < 0.6)
@@ -52,12 +53,12 @@ public class SanityScript : MonoBehaviour
         
         else if(sanity_value < 0.8)
         {
-            timeCounter = 0.005f;
+            timeCounter = 0.05f;
         } 
         
         else
         {
-            timeCounter = 0.001f;
+            timeCounter = 0.1f;
         }
 
         //repete o ciclo infinitamente
@@ -72,19 +73,19 @@ public class SanityScript : MonoBehaviour
         //dois loops, um para aparecer a imagem, o outro para apagar
         ciclo = true;
 
-        for (i = 0; i < (sanity_value*100); i++)
+        for (i = 0; i < (1 - sanity_value) * 100; i++)
         {
-            cor_atual.a = (float) i / 100;
+            cor_atual.a = (float) i / 200;
             sanity_image.color = cor_atual;
-            yield return new WaitForSeconds(timeCounter);
-            
+            yield return new WaitForSeconds(timeCounter/10);
+            j = i;
         }
 
-        for (i=(int)(sanity_value * 100); i > 0; i--)
+        for (i = j; i > 0; i--)
         {
-            cor_atual.a = (float)i / 100;
+            cor_atual.a = (float) i / 200;
             sanity_image.color = cor_atual;
-            yield return new WaitForSeconds(timeCounter);
+            yield return new WaitForSeconds(timeCounter/10);
 
         }
 

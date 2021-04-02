@@ -15,9 +15,8 @@ public class CameraFollow : MonoBehaviour
                                          Mathf.Clamp(player.position.y, -8.8f, 33.5f), -80f);*/
         transform.position = new Vector3(Mathf.Clamp(player.position.x, -13.1f, 17.5f),
                                          Mathf.Clamp(player.position.y, -6.4f, 32.3f), -80f);
-        Debug.Log(sanity.sanity_value);
-        Debug.Log("teste");
-        if(sanity.sanity_value > 0.5)
+        
+        if(sanity.sanity_value < 0.5)
         {
             StartCoroutine(shake());
         }
