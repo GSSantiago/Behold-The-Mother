@@ -1,2 +1,3 @@
 # Terror-2D
-Projeto de jogo proposto pelo grupo GAMSO
+
+Projeto de jogo proposto pelo grupo GAMSO, baseado na mitologia criada por H. P. Lovecraft, com elementos de survival horror e bla bla bla.
