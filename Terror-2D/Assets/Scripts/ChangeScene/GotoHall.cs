@@ -7,12 +7,9 @@ public class GotoHall : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    AsyncOperation asyncOperation;
+
     void Start()
     {
-
-
-        StartCoroutine(LoadYourAsyncScene());
 
 
     }
@@ -27,7 +24,7 @@ public class GotoHall : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            asyncOperation.allowSceneActivation = true;
+            SceneManager.LoadScene("Entrance Hall");
 
         }
         
@@ -35,21 +32,4 @@ public class GotoHall : MonoBehaviour
 
     }
 
-    IEnumerator LoadYourAsyncScene()
-    {
-        // The Application loads the Scene in the background as the current Scene runs.
-        // This is particularly good for creating loading screens.
-        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
-        // a sceneBuildIndex of 1 as shown in Build Settings.
-        asyncOperation.allowSceneActivation = false;
-
-        asyncOperation = SceneManager.LoadSceneAsync("Entrance Hall");
-
-        // Wait until the asynchronous scene fully loads
-        while (!asyncOperation.isDone)
-        {
-            
-            yield return null;
-        }
-    }
 }
