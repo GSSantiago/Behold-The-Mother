@@ -5,16 +5,17 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class CandleScript : MonoBehaviour
 {
-    private BoxCollider2D bc;
+    private CircleCollider2D coll;
     private Rigidbody2D rb;
     public Light2D luz;
-
-    //mode = 0 - apagada -- mode = 1 - acesa
-    public int mode = 0;
+    public GameObject fire_particle;
+    public GameObject smoke_particle;
+    
+    public bool mode = false;
 
     void Awake()
     {
-        bc = gameObject.GetComponent<BoxCollider2D>();
+        coll = gameObject.GetComponent<CircleCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     void Start()
@@ -25,30 +26,34 @@ public class CandleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mode == 0)
+        if(mode == false)
         {
+            fire_particle.SetActive(false);
+            smoke_particle.SetActive(false);
             luz.intensity = 0;
         }
 
-        if(mode == 1)
+        if(mode == true)
         {
+            fire_particle.SetActive(true);
+            smoke_particle.SetActive(true);
             luz.intensity = 1;
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             if (Input.GetKeyDown("e"))
             {
-                if (mode == 0)
+                if (mode == false)
                 {
-                    mode = 1;
+                    mode = true;
                 }
                 else
                 {
-                    mode = 0;
+                    mode = false;
                 }
             }
         }
