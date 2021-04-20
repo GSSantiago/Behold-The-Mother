@@ -15,14 +15,15 @@ public class EnemyPatrol : MonoBehaviour
     public Transform[] points;
     public Path p;
     public AIPath InimigoIA;
- 
-    
-    Seeker seeker;
+    public AstarPath astar;
 
+    Seeker seeker;
+    //EU SOU O ORIGINALLLLL
     //DECLARAÇÃO DE VARIAVEIS
     bool isRandomfinish;
     bool isMoving;
-  
+    public bool isInside = false;
+
 
     //Inicialização de lista
     List<int> ways = new List<int>();
@@ -35,18 +36,24 @@ public class EnemyPatrol : MonoBehaviour
         GerarRandom();//Gera uma lista de waypoints random
 
         StartCoroutine(estaMovendo());
-        
+
         seeker.StartPath(transform.position, points[ways[0]].position);
 
+
     }
-
-
-
     // Update is called once per frame
     void Update()
     {
-       
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isInside = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isInside = false;
     }
 
     public void perseguir()
@@ -55,31 +62,35 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
-
-    #region Patrulha
-    int indexWay=0;
-   public void patrulha()
+    public void scan()
     {
-            if (InimigoIA.reachedEndOfPath && !isMoving)
-            {
-                seeker.StartPath(transform.position, points[ways[indexWay]].position);
-                //Debug.Log("O way atual é:" + points[ways[indexWay]]);
-                indexWay++;
-
-                if (indexWay == 5)
-                {
-
-                    GerarRandom();
-                    indexWay = 0;
-                }
-            }
-
-           
-        
+        astar.Scan();
     }
 
 
-    //Declaração de variavel para função abaixo
+    #region Patrulha
+    int indexWay = 0;
+    public void patrulha()
+    {
+        if (InimigoIA.reachedEndOfPath && !isMoving)
+        {
+            seeker.StartPath(transform.position, points[ways[indexWay]].position);
+            //Debug.Log("O way atual é:" + points[ways[indexWay]]);
+            indexWay++;
+
+            if (indexWay == 5)
+            {
+
+                GerarRandom();
+                indexWay = 0;
+            }
+        }
+
+
+
+    }
+
+
 
     void GerarRandom()
     {
@@ -98,7 +109,7 @@ public class EnemyPatrol : MonoBehaviour
             if (ways.Count == 5)
                 isRandomfinish = false;
         }
-        
+
     }
 
 
@@ -113,11 +124,14 @@ public class EnemyPatrol : MonoBehaviour
                 isMoving = false;
             else
                 isMoving = true;
+
             yield return null;
         }
 
     }
 
     #endregion
+
+
 }
 

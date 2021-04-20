@@ -28,13 +28,13 @@ public class Porta : MonoBehaviour
         myGlowClosed = this.gameObject.transform.GetChild(0).gameObject;
         myAnim = this.gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>();
         myGlowOpen = this.gameObject.transform.GetChild(2).gameObject;
-        
+
         myAS = GetComponent<AudioSource>();
         interactionArea = GetComponent<Collider2D>();
         collision = myGlowClosed.GetComponent<Collider2D>();
         mySROpen = myGlowOpen.GetComponent<SpriteRenderer>();
         mySRClosed = myGlowClosed.GetComponent<SpriteRenderer>();
-        
+
         collision.enabled = true;
 
         mySRClosed.enabled = false;
@@ -46,43 +46,68 @@ public class Porta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(t < 1000)
-            t += 60*Time.deltaTime;
-        if(inside){
-            if (Input.GetKeyDown(KeyCode.E) && t > 35){
-                t=0;
+
+        if (t < 1000)
+            t += 60 * Time.deltaTime;
+        if (inside)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && t > 35)
+            {
+
+                t = 0;
                 myAnim.SetBool("Interagido", true);
                 mySRClosed.enabled = !mySRClosed;
                 mySROpen.enabled = !mySROpen;
                 open = !open;
                 myAS.pitch = Random.Range(1f, 3f);
-                if(open){
+                if (open)
+                {
                     myAS.PlayOneShot(acOpen, Random.Range(0.8f, 1f));
-                }else{
+                }
+                else
+                {
                     myAS.PlayOneShot(acClose, Random.Range(0.8f, 1f));
                 }
             }
-            else if(t > 30){
+            else if (t > 30)
+            {
                 myAnim.SetBool("Interagido", false);
                 mySRClosed.enabled = !open;
                 mySROpen.enabled = open;
             }
-        }else{
+        }
+        else
+        {
             mySRClosed.enabled = false;
             mySROpen.enabled = false;
         }
         collision.enabled = !open;
+
+        ChangeLayer();
     }
 
-    private void OnTriggerEnter2D(Collider2D c) {
-        if(c.gameObject.tag == "Player"){
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject.tag == "Player")
+        {
             inside = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D c) {
-        if(c.gameObject.tag == "Player"){
+    private void OnTriggerExit2D(Collider2D c)
+    {
+        if (c.gameObject.tag == "Player")
+        {
             inside = false;
         }
-        
+
+    }
+
+    public void ChangeLayer()
+    {
+        if (open == true)
+            gameObject.layer = 0;
+
+        if (open == false)
+            gameObject.layer = 11;
     }
 }

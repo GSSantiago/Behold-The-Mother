@@ -24,23 +24,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
-using UnityEngine.UI;
 
-public class EnemyFOV : MonoBehaviour
+public class EnemyFOVSanity : MonoBehaviour
 {
     [SerializeField] private LayerMask camada;
-    [SerializeField] private EnemyPatrol enemy;
-    public Text contador;
+    [SerializeField] private SanityScript sanity;
+
 
 
     private Mesh malha;
     public float fov;
     private Vector3 origin;
-    public float startingAngle;
-    public float viewDistance = 20f;//Original 2f
-
-    public bool isplayerFound;
-    public bool isPerseguindo;
+    private float startingAngle;
+    public float viewDistance = 4f;//Original 2f
+    public int raycount;
+    public int perda;
 
 
 
@@ -50,28 +48,17 @@ public class EnemyFOV : MonoBehaviour
         malha = new Mesh(); //Criando o objeto mesh(malha) mas apenas na memoria
         GetComponent<MeshFilter>().mesh = malha;
         origin = Vector3.zero;
-        fov = 90f; //Original 90f
-        CallTime();
-
+        fov = 360f; //Original 90f
+        //raycount = 4;
     }
 
     // Update is called once per frame
-    #region FOV
     void LateUpdate()
     {
 
-        int raycount = 50;
+        //int raycount = 4;
         float angle = startingAngle; //Original 0f
         float angleincrease = fov / raycount;
-
-
-        if (Input.GetKey(KeyCode.L))
-        {
-            Debug.Log("Parando corotinas");
-            StopTime();
-        }
-
-        contador.text = "Counter: " + counter;
 
 
 
@@ -85,8 +72,6 @@ public class EnemyFOV : MonoBehaviour
         int vertexIndex = 1;
         int triangleIndex = 0;
 
-
-
         //Essa função for está criando varios triangulos de acordo com o valor de raycount
         //a cada loop do for, um triangulo será criado, tomando ponto fixo, origem, e a partir dele
         //criando um triangulo
@@ -98,29 +83,22 @@ public class EnemyFOV : MonoBehaviour
             {
                 //Nada hitou
                 vertex = origin + UtilsClass.GetVectorFromAngle(angle) * viewDistance;
-                // Debug.Log("Nada hitou");
+                //Debug.Log("Nada hitou");
 
             }
             else
             {
                 //Hitou 
                 vertex = raycastHit2D.point;
-
-                if (raycastHit2D.collider.gameObject.tag == "Player" && enemy.isInside)
+                // Debug.Log("Hitting: " + raycastHit2D.collider.tag);
+                if (raycastHit2D.collider.gameObject.tag == "Player")
                 {
-                    isplayerFound = true;
-                    isPerseguindo = true;
-                    //  Debug.Log("Player dentro da view");
+                    //Debug.Log("Perdendo sanidade");
+                    if (sanity.sanity_value != 0)
+                        sanity.sanity_value -= perda * Time.deltaTime;
+
 
                 }
-                else
-                    if (!enemy.isInside)
-                {
-                    //Debug.Log("SEI LA");
-                    isplayerFound = false;
-                    // isPerseguindo = false;
-                }
-
 
 
             }
@@ -138,15 +116,12 @@ public class EnemyFOV : MonoBehaviour
             angle -= angleincrease;
         }
 
-
-
         malha.vertices = vertices;
         malha.uv = uv;
         malha.triangles = triangles;
 
 
     }
-
 
 
     public void setOrigin(Vector3 origin)
@@ -158,54 +133,8 @@ public class EnemyFOV : MonoBehaviour
     {
         startingAngle = aimDirection;
     }
-    #endregion
 
-
-
-    #region setCoroutine
-    public void CallTime()
-    {
-        StartCoroutine(Timer());
-    }
-
-    public void StopTime()
-    {
-        StopCoroutine(Timer());
-    }
-
-    #endregion
-
-    #region counter
-    int counter = 0;
-    private IEnumerator Timer()
-    {
-        counter = 0;
-
-        while (isPerseguindo)
-        {
-            // Debug.Log("To funcionando");
-            yield return new WaitForSeconds(1);
-            if (!isplayerFound)
-            {
-                counter++;
-                // Debug.Log("Counter: " +counter);
-                //Se o contador atingir 10 segundos,  o player escapou do monstro
-                if (counter == 10)
-                {
-                    Debug.Log("Player fugiu do monstro");
-                    isPerseguindo = false;
-                    counter = 0;
-                }
-            }
-            else
-            {
-                counter = 0;
-                Debug.Log("O monstro continua tendo visão");
-            }
-        }
-
-    }
-    #endregion
 
 }
+
 

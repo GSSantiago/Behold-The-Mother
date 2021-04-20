@@ -2,50 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class PerseguirBehaviour : StateMachineBehaviour
+public class CloseBehaviour : StateMachineBehaviour
 {
     public EnemyPatrol patrulha;
-    public EnemyFOV fov;
-    public AudioSource PerseguicaoSom;
+    public PlayerMovement player;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         patrulha = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyPatrol>();
-        fov = GameObject.FindGameObjectWithTag("FOV").GetComponent<EnemyFOV>();
-        PerseguicaoSom = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
-        PerseguicaoSom.Play();
-
-        fov.CallTime();
-
-
+        player.ChangeLayer(true);
+        patrulha.scan();
+        player.ChangeLayer(false);
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        patrulha.perseguir();
-
-        if (!fov.isPerseguindo)
-        {
-            animator.SetBool("Isperseguindo", false);
-            animator.SetBool("Ispatrulhando", true);
-
-        }
-
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Parando corotina");
-        fov.StopTime();
-        fov.isPerseguindo = false;
-        PerseguicaoSom.Stop();
-
+       
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

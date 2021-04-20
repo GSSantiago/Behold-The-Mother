@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SanityScript : MonoBehaviour
 {
+
     public float sanity_value;
     public Image sanity_image;
     Color cor_atual;
@@ -13,56 +14,58 @@ public class SanityScript : MonoBehaviour
     float timeCounter;
     int repeticoes;
 
+
+
     void Start()
     {
         //imagem padrão, com a sanidade em nível normal
         sanity_value = 100;
         cor_atual = Color.white;
-        cor_atual.a = (1 - (sanity_value/100));
+        cor_atual.a = (1 - (sanity_value / 100));
         sanity_image.color = cor_atual;
+        //StartCoroutine(pulse());
     }
 
     void Update()
     {
-        if (Input.GetKey("h"))
-        {
-            sanity_value -= 1f;
-        }
-
-        if(sanity_value <= 0)
+        if (Input.GetKey(KeyCode.K))
         {
             sanity_value = 100;
         }
 
-        
+        if (sanity_value <= 0)
+        {
+            sanity_value = 0;
+        }
+
         //criando intervalos de valores e respectivos tempos para as pulsações
         if (sanity_value < 20)
         {
             timeCounter = 0.001f;
-        } 
-        
+        }
+
         else if (sanity_value < 40)
         {
             timeCounter = 0.005f;
-        } 
-        
-        else if(sanity_value < 60)
+        }
+
+        else if (sanity_value < 60)
         {
             timeCounter = 0.01f;
-        } 
-        
-        else if(sanity_value < 80)
+        }
+
+        else if (sanity_value < 80)
         {
             timeCounter = 0.05f;
-        } 
-        
+        }
+
         else
         {
             timeCounter = 0.1f;
         }
 
         //repete o ciclo infinitamente
-        if(ciclo == false)
+        if (ciclo == false)
         {
             StartCoroutine(pulse());
         }
@@ -71,24 +74,31 @@ public class SanityScript : MonoBehaviour
     IEnumerator pulse()
     {
         //dois loops, um para aparecer a imagem, o outro para apagar
-        ciclo = true;
-
-        for (i = 0; i < (1 - (sanity_value/100)) * 100; i++)
+        // while (true)
+        //  {
+        if (ciclo == false)
         {
-            cor_atual.a = (float) i / 200;
-            sanity_image.color = cor_atual;
-            yield return new WaitForSeconds(timeCounter/10);
-            j = i;
+            ciclo = true;
+
+            for (i = 0; i < (1 - (sanity_value / 100)) * 100; i++)
+            {
+                cor_atual.a = (float)i / 200;
+                sanity_image.color = cor_atual;
+                yield return new WaitForSeconds(timeCounter / 10);
+                j = i;
+            }
+
+            for (i = j; i > 0; i--)
+            {
+                cor_atual.a = (float)i / 200;
+                sanity_image.color = cor_atual;
+                yield return new WaitForSeconds(timeCounter / 10);
+
+            }
+
+            ciclo = false;
+            //}
+            // yield return null;
         }
-
-        for (i = j; i > 0; i--)
-        {
-            cor_atual.a = (float) i / 200;
-            sanity_image.color = cor_atual;
-            yield return new WaitForSeconds(timeCounter/10);
-
-        }
-
-        ciclo = false;
     }
 }
