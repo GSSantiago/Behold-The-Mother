@@ -9,6 +9,8 @@ public class PerseguirBehaviour : StateMachineBehaviour
     public EnemyFOV fov;
     public AudioSource PerseguicaoSom;
 
+    public AudioSource[] sounds;
+    public AudioSource stopPerseguir;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -45,6 +47,11 @@ public class PerseguirBehaviour : StateMachineBehaviour
         fov.StopTime();
         fov.isPerseguindo = false;
         PerseguicaoSom.Stop();
+
+        sounds = GameObject.FindGameObjectWithTag("MainCamera").GetComponents<AudioSource>();
+        stopPerseguir = sounds[1];//era 1
+        stopPerseguir.Play();
+
 
     }
 

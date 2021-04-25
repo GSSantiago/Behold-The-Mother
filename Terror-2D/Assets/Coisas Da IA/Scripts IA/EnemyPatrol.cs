@@ -18,12 +18,10 @@ public class EnemyPatrol : MonoBehaviour
     public AstarPath astar;
 
     Seeker seeker;
-    //EU SOU O ORIGINALLLLL
     //DECLARAÇÃO DE VARIAVEIS
     bool isRandomfinish;
     bool isMoving;
     public bool isInside = false;
-
 
     //Inicialização de lista
     List<int> ways = new List<int>();
@@ -44,6 +42,8 @@ public class EnemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
