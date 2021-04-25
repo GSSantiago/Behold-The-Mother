@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PauseScript : MonoBehaviour
 {
     public static bool GamePaused = false;
     public GameObject PauseMenu;
+    public Volume blurVolume;
 
-    private void Start()
+    void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         PauseMenu.SetActive(false);
     }
     void Update()
@@ -32,6 +37,9 @@ public class PauseScript : MonoBehaviour
         PauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GamePaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        blurVolume.weight = 0f;
     }
 
     void Pause()
@@ -39,6 +47,9 @@ public class PauseScript : MonoBehaviour
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GamePaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        blurVolume.weight = 1f;
     }
 
     public void Menu()
