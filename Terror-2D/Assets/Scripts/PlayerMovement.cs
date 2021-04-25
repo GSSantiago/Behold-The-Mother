@@ -14,16 +14,21 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDir;
     public Vector2 movement;
 
+    [SerializeField] Dialog dialog;
+
     private void Start()
     {
         anim.SetBool("Ismove", false);
         changeControl = false;
-
     }
 
     #region Movimento
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.P))
+            DialogManager.Instance.ShowDialog(dialog);
+
         movement.x = 0f;
         movement.y = 0f;
 

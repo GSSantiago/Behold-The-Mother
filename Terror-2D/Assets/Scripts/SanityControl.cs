@@ -33,18 +33,13 @@ public class SanityControl : MonoBehaviour
     void Update()
     {
         //5 É uma distancia boa
-       // if (Vector3.Distance(Player.position, enemy.position) > 5)
-          //  CircleSanity.SetActive(false);
-      //  else
-          //  CircleSanity.SetActive(true);
+        if (Vector3.Distance(Player.position, enemy.position) > 5)
+            CircleSanity.SetActive(false);
+        else
+            CircleSanity.SetActive(true);
 
 
-        if (Input.GetKey(KeyCode.P))
-        {
-
-            Debug.Log("Efeito random =2 ");
-            EfeitoRandom = 3;
-        }
+        
     }
 
     IEnumerator efeitos()
