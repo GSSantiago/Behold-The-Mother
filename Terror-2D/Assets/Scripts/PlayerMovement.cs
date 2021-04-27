@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+
         anim.SetBool("Ismove", false);
         changeControl = false;
     }
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+        
         if (Input.GetKeyDown(KeyCode.P))
             DialogManager.Instance.ShowDialog(dialog);
 
