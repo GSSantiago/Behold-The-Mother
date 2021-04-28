@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SanityScript : MonoBehaviour
 {
@@ -62,6 +63,11 @@ public class SanityScript : MonoBehaviour
         else
         {
             timeCounter = 0.1f;
+        }
+
+        if(sanity_value <= 0)
+        {
+            SceneManager.LoadScene("DefeatScene");
         }
 
         //repete o ciclo infinitamente
