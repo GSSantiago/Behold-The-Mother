@@ -10,7 +10,6 @@ public class PauseScript : MonoBehaviour
     public static bool GamePaused = false;
     public GameObject PauseMenu;
     public Volume blurVolume;
-    [SerializeField] GameManagerHall objective;
 
     void Start()
     {
@@ -51,7 +50,6 @@ public class PauseScript : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         blurVolume.weight = 1f;
-        objective.objetivos();
     }
 
     public void Menu()

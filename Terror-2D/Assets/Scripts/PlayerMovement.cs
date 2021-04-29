@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDir;
     public Vector2 movement;
 
-    //[SerializeField] Dialog dialog;
+    [SerializeField] Dialog dialog;
 
     private void Start()
     {
@@ -26,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     #region Movimento
     void Update()
     {
+
+        
+        if (Input.GetKeyDown(KeyCode.P))
+            DialogManager.Instance.ShowDialog(dialog);
+
         movement.x = 0f;
         movement.y = 0f;
 
