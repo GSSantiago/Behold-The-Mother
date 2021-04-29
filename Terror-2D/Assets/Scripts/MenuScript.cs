@@ -15,11 +15,25 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("Entrance Hall");
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void Instructions()
+    {
+        SceneManager.LoadScene("Instructions");
+    }
+
     public void Retry()
     {
         SceneManager.LoadScene("Entrance Hall");
     }
 
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
     public void Quit()
     {
         Application.Quit();

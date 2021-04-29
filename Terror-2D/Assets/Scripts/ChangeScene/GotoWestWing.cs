@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GotoHall : MonoBehaviour
+public class GotoWestWing : MonoBehaviour
 {
     //AsyncOperation asyncOperation;
     public Animator transition;
@@ -28,10 +28,10 @@ public class GotoHall : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        SceneManager.LoadScene("Entrance Hall");
+        SceneManager.LoadScene("West Wing");
 
-        /*asyncOperation = SceneManager.LoadSceneAsync("Entrance Hall");
-        asyncOperation.allowSceneActivation = false;/*
+        /*asyncOperation = SceneManager.LoadSceneAsync("West Wing");
+        asyncOperation.allowSceneActivation = false;*/
 
         // Wait until the asynchronous scene fully loads
         /*while (!asyncOperation.isDone)
