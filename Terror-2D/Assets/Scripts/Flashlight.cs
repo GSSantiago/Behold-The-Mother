@@ -43,7 +43,7 @@ public class Flashlight : MonoBehaviour
         diff.Normalize();
         float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
-        if(Input.GetKeyDown("f") && mode==0)
+        /*if(Input.GetKeyDown("f") && mode==0)
         {
             mode0();
             mode = 1;
@@ -53,7 +53,7 @@ public class Flashlight : MonoBehaviour
         {
             mode1();
             mode = 0;
-        }
+        }*/
 
         if(mode == 1)
         {

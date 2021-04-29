@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GotoHall : MonoBehaviour
+public class GotoWestWing : MonoBehaviour
 {
     public Animator transition;
     public BoxCollider2D bc;
 
-    // Update is called once per frame
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -24,7 +23,6 @@ public class GotoHall : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        SceneManager.LoadScene("Entrance Hall");
+        SceneManager.LoadScene("West Wing");
     }
-
 }
