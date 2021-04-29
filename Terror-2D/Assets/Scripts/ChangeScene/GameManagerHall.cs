@@ -11,9 +11,7 @@ public class GameManagerHall : MonoBehaviour
     private Transform cameraPos;
     public bool isgameStarted;
 
-    [SerializeField] ObjeticveList objetivoLista;
-    [SerializeField] Text ObjectiveText;
-    public int ObjetivoAtual=0;
+   
     
 
 
@@ -27,7 +25,7 @@ public class GameManagerHall : MonoBehaviour
         cameraPos = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
 
         //Caso o modo jogo esteja ativado
-        GameStart();
+        GameMode();
             
 
     }
@@ -67,7 +65,7 @@ public class GameManagerHall : MonoBehaviour
     }
     #endregion
 
-    void GameStart()
+    void GameMode()
     {
         if (isgameStarted)
         {
@@ -77,8 +75,5 @@ public class GameManagerHall : MonoBehaviour
         }
     }
 
-    public void objetivos()
-    {
-        ObjectiveText.text = objetivoLista.Lines[ObjetivoAtual];
-    }
+    
 }

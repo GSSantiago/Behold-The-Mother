@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - FOV
   - baseParede
+  - UI
+  - Pause
   layers:
   - Default
   - TransparentFX

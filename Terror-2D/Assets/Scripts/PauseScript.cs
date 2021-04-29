@@ -4,13 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviour
 {
     public static bool GamePaused = false;
     public GameObject PauseMenu;
     public Volume blurVolume;
-    [SerializeField] GameManagerHall objective;
+
+    [SerializeField] Text ObjectiveText;
+    public int ObjetivoAtual=0;
+
+    [SerializeField] ObjeticveList objetivoLista;
+
+
 
     void Start()
     {
@@ -51,11 +58,16 @@ public class PauseScript : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         blurVolume.weight = 1f;
-        objective.objetivos();
+        objetivos();
     }
 
     public void Menu()
     {
         SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void objetivos()
+    {
+        ObjectiveText.text = objetivoLista.Lines[ObjetivoAtual];
     }
 }

@@ -37,6 +37,8 @@ public class SanityScript : MonoBehaviour
         if (sanity_value <= 0)
         {
             sanity_value = 0;
+            SceneManager.LoadScene("DefeatScene");
+
         }
 
         //criando intervalos de valores e respectivos tempos para as pulsações
@@ -65,13 +67,9 @@ public class SanityScript : MonoBehaviour
             timeCounter = 0.1f;
         }
 
-        if(sanity_value <= 0)
-        {
-            SceneManager.LoadScene("DefeatScene");
-        }
 
         //repete o ciclo infinitamente
-        if (ciclo == false)
+        if (ciclo == false && sanity_value < 80)
         {
             StartCoroutine(pulse());
         }
