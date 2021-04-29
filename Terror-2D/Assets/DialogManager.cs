@@ -7,6 +7,8 @@ public class DialogManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogBox;
     [SerializeField] Text dialogText;
+    [SerializeField] PlayerMovement playerMovement;
+
 
     [SerializeField] int lettersPerSecond;
    // public Animator anim;
@@ -22,18 +24,19 @@ public class DialogManager : MonoBehaviour
     {
         Instance = this;
     }
-
+   
     public void ShowDialog(Dialog dialog)
     {
-
         this.dialog = dialog;
         dialogBox.SetActive(true);
+        playerMovement.enabled = false;
         StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
     //antes era handleupdate
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && !isTyping)
+
+        if (Input.GetKeyDown(KeyCode.E) && !isTyping && dialogBox.active)
         {
             ++currentLine;
             if (currentLine < dialog.Lines.Count)
@@ -44,6 +47,7 @@ public class DialogManager : MonoBehaviour
             {
                 currentLine = 0;
                 dialogBox.SetActive(false);
+                playerMovement.enabled = true;
             }
         }
     }
