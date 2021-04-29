@@ -20,10 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DefeatScene.unity
     guid: 465c7535c88cc7348b2f79ef59f3b95c
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 0a76be1a865787947a112b2c9f866fa7
-  - enabled: 1
-    path: Assets/Scenes/Instructions.unity
-    guid: 1ba9d1026b1406640b4a44dcbc7db600
   m_configObjects: {}
