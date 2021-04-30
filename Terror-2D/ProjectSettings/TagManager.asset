@@ -12,6 +12,7 @@ TagManager:
   - UI
   - Pause
   - Coming
+  - Blur
   layers:
   - Default
   - TransparentFX
