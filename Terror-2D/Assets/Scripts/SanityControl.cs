@@ -66,7 +66,7 @@ public class SanityControl : MonoBehaviour
                         //foreverSong();
                         break;
                     default:
-                        EfeitoRandom = Random.Range(1, 4);
+                        EfeitoRandom = Random.Range(1, 3);
                         Debug.Log("Efeito é" + EfeitoRandom);
                         break;
                 }

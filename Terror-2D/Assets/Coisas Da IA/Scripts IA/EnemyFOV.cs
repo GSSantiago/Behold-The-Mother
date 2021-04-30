@@ -30,7 +30,7 @@ public class EnemyFOV : MonoBehaviour
 {
     [SerializeField] private LayerMask camada;
     [SerializeField] private EnemyPatrol enemy;
-    public Text contador;
+   // public Text contador;
 
 
     private Mesh malha;
@@ -71,7 +71,7 @@ public class EnemyFOV : MonoBehaviour
             StopTime();
         }
 
-        contador.text = "Counter: " + counter;
+        //contador.text = "Counter: " + counter;
 
 
 

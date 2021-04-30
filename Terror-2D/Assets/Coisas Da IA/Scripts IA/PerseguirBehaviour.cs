@@ -20,6 +20,7 @@ public class PerseguirBehaviour : StateMachineBehaviour
         PerseguicaoSom = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
 
         PerseguicaoSom.Play();
+        PerseguicaoSom.volume = 1f;
 
         fov.CallTime();
 
@@ -46,11 +47,12 @@ public class PerseguirBehaviour : StateMachineBehaviour
         Debug.Log("Parando corotina");
         fov.StopTime();
         fov.isPerseguindo = false;
-        PerseguicaoSom.Stop();
+        patrulha.DiminuirVolume();
+        //PerseguicaoSom.Stop();
 
-        sounds = GameObject.FindGameObjectWithTag("MainCamera").GetComponents<AudioSource>();
-        stopPerseguir = sounds[1];//era 1
-        stopPerseguir.Play();
+        //sounds = GameObject.FindGameObjectWithTag("MainCamera").GetComponents<AudioSource>();
+       // stopPerseguir = sounds[1];//era 1
+        //stopPerseguir.Play();
 
 
     }

@@ -11,8 +11,9 @@ public class GameManagerHall : MonoBehaviour
     private Transform cameraPos;
     public bool isgameStarted;
 
-   
-    
+    private Iscoming coming;
+
+
 
 
     // Start is called before the first frame update
@@ -24,9 +25,14 @@ public class GameManagerHall : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         cameraPos = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
 
+        coming = GameObject.FindGameObjectWithTag("Coming").GetComponent<Iscoming>();
+
         //Caso o modo jogo esteja ativado
         GameMode();
-            
+
+        Iscoming();
+        
+        
 
     }
 
@@ -70,10 +76,24 @@ public class GameManagerHall : MonoBehaviour
         if (isgameStarted)
         {
             playerPos.position = new Vector3(-0.03f, -8.61f, 0f);
+            isgameStarted = false;
 
 
         }
     }
 
-    
+    private void Iscoming()
+    {
+        if (coming.FromWestWing)
+            playerPos.position = new Vector3(-16.71103f, 6.001447f, 0f);
+
+        if (coming.FromEastWing)
+            return;
+
+
+    }
+
+
+
+
 }

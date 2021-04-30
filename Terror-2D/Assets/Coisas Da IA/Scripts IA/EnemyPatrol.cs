@@ -16,6 +16,8 @@ public class EnemyPatrol : MonoBehaviour
     public Path p;
     public AIPath InimigoIA;
     public AstarPath astar;
+    public AudioSource PerseguicaoSom;
+
 
     Seeker seeker;
     //DECLARAÇÃO DE VARIAVEIS
@@ -30,6 +32,8 @@ public class EnemyPatrol : MonoBehaviour
     void Start()
     {
         seeker = GetComponent<Seeker>();
+        PerseguicaoSom = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+
 
         GerarRandom();//Gera uma lista de waypoints random
 
@@ -42,7 +46,6 @@ public class EnemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
 
     }
 
@@ -127,6 +130,22 @@ public class EnemyPatrol : MonoBehaviour
 
             yield return null;
         }
+
+    }
+
+    public void DiminuirVolume()
+    {
+        StartCoroutine(diminuirVolume());
+    }
+
+    IEnumerator diminuirVolume()
+    {
+        for(float i =1;i!=0;i-=0.1f)
+        {
+            PerseguicaoSom.volume = i;
+            yield return new WaitForSeconds(1f);
+        }
+               
 
     }
 

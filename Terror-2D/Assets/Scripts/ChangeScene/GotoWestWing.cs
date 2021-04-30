@@ -7,12 +7,21 @@ public class GotoWestWing : MonoBehaviour
 {
     public Animator transition;
     public BoxCollider2D bc;
+    private Iscoming coming;
+
+    private void Start()
+    {
+        coming = GameObject.FindGameObjectWithTag("Coming").GetComponent<Iscoming>();
+
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(Scene());
+            coming.fromEntranceHall();
+
         }
 
     }
