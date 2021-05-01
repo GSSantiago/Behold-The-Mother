@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8533883160337882415}
   - component: {fileID: 7389338886126555758}
   m_Layer: 11
-  m_Name: 1_1
+  m_Name: Armadura 2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1282769799
   m_SortingLayer: 3
-  m_SortingOrder: 6
+  m_SortingOrder: 5
   m_Sprite: {fileID: -7763467944246332710, guid: a3c11e2f9e523be46a76156608745c43,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
