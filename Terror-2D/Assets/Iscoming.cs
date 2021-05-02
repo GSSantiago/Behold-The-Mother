@@ -10,6 +10,7 @@ public class Iscoming : MonoBehaviour
     public bool FromEastWing=false;
 
 
+
     // Start is called before the first frame update
     void Start()
     {

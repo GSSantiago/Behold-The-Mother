@@ -8,6 +8,7 @@ public class DialogObject : MonoBehaviour
     private GameObject dialogObject;
     private Collider2D collider;
     private PlayerMovement playerMovement;
+  
 
 
     [SerializeField] Dialog dialog;
@@ -31,4 +32,7 @@ public class DialogObject : MonoBehaviour
             DialogManager.Instance.ShowDialog(dialog);
         }
     }
+
+
+
 }

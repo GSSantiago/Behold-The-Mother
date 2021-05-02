@@ -20,7 +20,8 @@ public class GameManagerHall : MonoBehaviour
     void Start()
     {
         //Coroutine para troca de cena
-       // StartCoroutine(LoadYourAsyncScene());
+        // StartCoroutine(LoadYourAsyncScene());
+       
 
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         cameraPos = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
@@ -41,6 +42,7 @@ public class GameManagerHall : MonoBehaviour
     {
         cameraPos.position = new Vector3(Mathf.Clamp(playerPos.position.x, -7f, 7f),
                                         Mathf.Clamp(playerPos.position.y, -3.7f, 36.4f), -80f);
+
     }
 
     #region Troca de cena

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class SanityControl : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SanityControl : MonoBehaviour
     public Camera camera;
     public Transform CameraZ;
 
+    private Scene scene;
+    private string sceneName;
 
     int EfeitoRandom;
     bool crazy;
@@ -23,6 +26,10 @@ public class SanityControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scene = SceneManager.GetActiveScene();
+
+        sceneName = scene.name;
+
         StartCoroutine(efeitos());
         StartCoroutine(crazyCamera());
         StartCoroutine(InvertedCamera());
@@ -33,13 +40,26 @@ public class SanityControl : MonoBehaviour
     void Update()
     {
         //5 É uma distancia boa
-        if (Vector3.Distance(Player.position, enemy.position) > 5)
-            CircleSanity.SetActive(false);
-        else
-            CircleSanity.SetActive(true);
+        if (sceneName == "West Wing")
+        {
+            if (Vector3.Distance(Player.position, enemy.position) > 5)
+                CircleSanity.SetActive(false);
+            else
+                CircleSanity.SetActive(true);
+        }
 
 
         
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        //Getcomponent
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        PlayerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        pixelCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PixelPerfectCamera>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        CameraZ = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
     }
 
     IEnumerator efeitos()
