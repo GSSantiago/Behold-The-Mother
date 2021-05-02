@@ -14,7 +14,8 @@ public class EnemyPatrol : MonoBehaviour
 
     public Transform[] points;
     public Path p;
-    public AIPath InimigoIA;
+  //  public AIPath InimigoIA;
+    public AILerp InimigoIA;
     public AstarPath astar;
     public AudioSource PerseguicaoSom;
 

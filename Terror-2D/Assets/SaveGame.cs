@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class SaveGame : MonoBehaviour
 {
+    public Collider2D collider;
 
     public SanityScript sanity;
     // Start is called before the first frame update
     void Start()
     {
-        
+        collider = GetComponent<Collider2D>();
+        sanity = GameObject.FindGameObjectWithTag("Sanity").GetComponent<SanityScript>();
+
     }
 
     // Update is called once per frame
@@ -20,9 +23,9 @@ public class SaveGame : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            sanity.sanity_value = 100;  
+            sanity.sanity_value = 100;
         }
     }
 
