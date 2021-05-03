@@ -5,15 +5,20 @@ using UnityEngine.UI;
 
 public class ItemDisplay : MonoBehaviour
 {
-    public BoxCollider2D bc;
+    //public BoxCollider2D bc;
     public Image item_image;
-    bool TakeItem = false;
+    bool Picaxe = false;
     
 
     // Update is called once per frame
     void Update()
     {
-        if (TakeItem)
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Picaxe = !Picaxe;
+        }
+
+        if (Picaxe)
         {
             item_image.enabled = true;
         }
@@ -23,12 +28,12 @@ public class ItemDisplay : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    /*void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("enter");
         if(collision.gameObject.tag == "Player")
         {
             TakeItem = true;
         }    
-    }
+    }*/
 }
