@@ -7,18 +7,18 @@ public class ItemDisplay : MonoBehaviour
 {
     //public BoxCollider2D bc;
     public Image item_image;
-    bool Picaxe = false;
-    
+    bool item = false;
+
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Picaxe = !Picaxe;
+            item = !item;
         }
 
-        if (Picaxe)
+        if (item)
         {
             item_image.enabled = true;
         }
@@ -28,12 +28,14 @@ public class ItemDisplay : MonoBehaviour
         }
     }
 
-    /*void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("enter");
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            TakeItem = true;
-        }    
-    }*/
-}
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                item = true;
+            }
+        }
+    }
+} 
