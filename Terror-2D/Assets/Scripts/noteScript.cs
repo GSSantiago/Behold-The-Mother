@@ -12,11 +12,11 @@ public class noteScript : MonoBehaviour
     bool anim = false;
     public Image noteImage;
     Vector3 pos = new Vector3(0f, 0f, 0f);
-    private Volume blurVolume;
+    public Volume blurVolume;
 
     void Start()
     {
-        blurVolume = GameObject.FindGameObjectWithTag("Blur").GetComponent<Volume>();
+        //blurVolume = GameObject.FindGameObjectWithTag("Blur").GetComponent<Volume>();
         blurVolume.weight = 0f;
     }
 

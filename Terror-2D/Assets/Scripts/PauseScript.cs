@@ -21,6 +21,7 @@ public class PauseScript : MonoBehaviour
 
     void Start()
     {
+        blurVolume.weight = 0f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         PauseMenu.SetActive(false);
