@@ -10,7 +10,7 @@ public class GameManagerWest : MonoBehaviour
     private PauseScript objective;
     private Iscoming coming;
 
-    private bool isWallFound = false;
+    public bool isWallFound = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class GameManagerWest : MonoBehaviour
         cameraPos.position = new Vector3(Mathf.Clamp(playerPos.position.x, -13.76f, 17.79f),
                                         Mathf.Clamp(playerPos.position.y, -6.889955f, 33.5f), -80f);
 
-        if (Input.GetKeyDown(KeyCode.M)&&!isWallFound)
+        if (isWallFound)
         {
             objective.ObjetivoAtual++;
             isWallFound = true;

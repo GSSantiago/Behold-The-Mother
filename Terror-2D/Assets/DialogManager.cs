@@ -13,10 +13,11 @@ public class DialogManager : MonoBehaviour
     [SerializeField] int lettersPerSecond;
    // public Animator anim;
 
-
     Dialog dialog;
+
     int currentLine = 0;
     bool isTyping;
+    public bool isFinished;
 
     public static DialogManager Instance { get; private set; }
 
@@ -29,14 +30,18 @@ public class DialogManager : MonoBehaviour
     {
         this.dialog = dialog;
         dialogBox.SetActive(true);
+
+        //Desabilitando movimento do jogador
+        playerMovement.Idle();
         playerMovement.enabled = false;
+       
         StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
     //antes era handleupdate
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && !isTyping && dialogBox.active)
+        if (Input.GetKeyDown(KeyCode.E) && !isTyping && dialogBox.activeSelf)
         {
             ++currentLine;
             if (currentLine < dialog.Lines.Count)
@@ -47,9 +52,12 @@ public class DialogManager : MonoBehaviour
             {
                 currentLine = 0;
                 dialogBox.SetActive(false);
+                isFinished = true;
                 playerMovement.enabled = true;
             }
         }
+        else
+            isFinished = false;
     }
 
     public IEnumerator TypeDialog(string line)

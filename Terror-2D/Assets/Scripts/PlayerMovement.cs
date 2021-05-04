@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 5f;
     public float normalSpeed = 5f;
     public float runSpeed = 8f;
-    public Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
     public Animator anim;
     public bool changeControl;
 
@@ -42,9 +42,10 @@ public class PlayerMovement : MonoBehaviour
         if (isIdle)
         {
             //Idle
-            rb.velocity = Vector2.zero;
-            anim.SetBool("Ismove", false);
-            anim.SetBool("Isrun", false);
+            //rb.velocity = Vector2.zero;
+            //anim.SetBool("Ismove", false);
+            //anim.SetBool("Isrun", false);
+            Idle();
         }
         else
         {
@@ -71,6 +72,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
     #endregion
+
+    public void Idle()
+    {
+        rb.velocity = Vector2.zero;
+        anim.SetBool("Ismove", false);
+        anim.SetBool("Isrun", false);
+    }
 
     public void ChangeLayer(bool change)
     {

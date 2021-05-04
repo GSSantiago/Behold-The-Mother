@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogObject : MonoBehaviour
+public class StoneBreak : MonoBehaviour
 {
 
-   // private GameObject dialogObject;
-    private CapsuleCollider2D collider;
+    // private GameObject dialogObject;
+    private Collider2D collider;
     private PlayerMovement playerMovement;
     public GameObject dialogBox;
 
     public DialogManager dialogM;
 
+    public GameManagerWest GMW;
+
+    public PauseScript objective;
+
     private bool inside;
+    private bool IsFinishedDialogWall;
 
     [SerializeField] Dialog dialog;
 
@@ -25,7 +30,7 @@ public class DialogObject : MonoBehaviour
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         //dialogBox = GameObject.FindGameObjectWithTag("Dialog").GetComponent<GameObject>();
         dialogM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<DialogManager>();
-        collider = GetComponent<CapsuleCollider2D>();
+        collider = GetComponent<Collider2D>();
 
 
 
@@ -33,19 +38,22 @@ public class DialogObject : MonoBehaviour
 
     private void Update()
     {
-        if(inside && !dialogM.isFinished)
+        if (inside && !dialogM.isFinished)
         {
-           if (Input.GetKeyDown(KeyCode.E) && !dialogBox.activeSelf)
-              DialogManager.Instance.ShowDialog(dialog);
-            
+            if (Input.GetKeyDown(KeyCode.E) && !dialogBox.activeSelf)
+            {
+                DialogManager.Instance.ShowDialog(dialog);
+                IsFinishedDialogWall = true;
+            }
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
 
-    if (collider.gameObject.tag == "Player")
-        inside = true;
-    
+        if (collider.gameObject.tag == "Player")
+            inside = true;
+
 
     }
 
@@ -53,8 +61,11 @@ public class DialogObject : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
             inside = false;
-    }
 
+        if (IsFinishedDialogWall && collider.gameObject.tag == "Player")
+            objective.ObjetivoAtual++;
+           
+    }
 
 
 }
