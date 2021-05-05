@@ -1019,8 +1019,9 @@ MonoBehaviour:
   objetivoLista:
     lines:
     - 'Objetivo: Encontre a chave da entrada'
-    - 
-    - 
+    - 'Objetivo: Encontre algo para quebrar a pedra'
+    - 'Objetivo: Fuja!!!'
+  objetivo: {fileID: 0}
 --- !u!1 &3341971840573429599
 GameObject:
   m_ObjectHideFlags: 0

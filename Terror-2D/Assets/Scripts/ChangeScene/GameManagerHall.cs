@@ -90,7 +90,7 @@ public class GameManagerHall : MonoBehaviour
             playerPos.position = new Vector3(-16.71103f, 6.001447f, 0f);
 
         if (coming.FromEastWing)
-            return;
+            playerPos.position = new Vector3(18.91115f, 6.453501f, 0f);
 
 
     }

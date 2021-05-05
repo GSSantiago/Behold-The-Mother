@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemDisplay : MonoBehaviour
+public class PickaxeDisplay : MonoBehaviour
 {
     //public BoxCollider2D bc;
     public Image item_image;
@@ -38,4 +38,4 @@ public class ItemDisplay : MonoBehaviour
             }
         }
     }
-} 
+}

@@ -5,12 +5,12 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
-    public Vector3 offset;
+    //public Vector3 offset;
     public SanityScript sanity;
 
     void Update () 
     {
-         transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, -80f); // Camera follows the player with specified offset position
+        // transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, -80f); // Camera follows the player with specified offset position
         /*transform.position = new Vector3(Mathf.Clamp(player.position.x, -18.5f, 22.5f),
                                          Mathf.Clamp(player.position.y, -8.8f, 33.5f), -80f);*/
        

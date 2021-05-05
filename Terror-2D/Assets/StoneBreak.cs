@@ -14,7 +14,8 @@ public class StoneBreak : MonoBehaviour
 
     public GameManagerWest GMW;
 
-    public PauseScript objective;
+    [SerializeField] Iscoming objetivo;
+
 
     private bool inside;
     private bool IsFinishedDialogWall;
@@ -31,6 +32,7 @@ public class StoneBreak : MonoBehaviour
         //dialogBox = GameObject.FindGameObjectWithTag("Dialog").GetComponent<GameObject>();
         dialogM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<DialogManager>();
         collider = GetComponent<Collider2D>();
+        objetivo = GameObject.FindGameObjectWithTag("Coming").GetComponent<Iscoming>();
 
 
 
@@ -63,7 +65,7 @@ public class StoneBreak : MonoBehaviour
             inside = false;
 
         if (IsFinishedDialogWall && collider.gameObject.tag == "Player")
-            objective.ObjetivoAtual++;
+            objetivo.Objective++;
            
     }
 

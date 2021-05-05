@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManagerWest : MonoBehaviour
+public class GameManagerEast : MonoBehaviour
 {
-
     private Transform playerPos;
     private Transform cameraPos;
     private PauseScript objective;
@@ -30,17 +29,17 @@ public class GameManagerWest : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        cameraPos.position = new Vector3(Mathf.Clamp(playerPos.position.x, -13.76f, 17.79f),
-                                        Mathf.Clamp(playerPos.position.y, -6.889955f, 33.5f), -80f);
+        cameraPos.position = new Vector3(Mathf.Clamp(playerPos.position.x, -13.58001f, 31.57075f),
+                                        Mathf.Clamp(playerPos.position.y, -3.008778f, 24.94313f), -80f);
 
-       
+
     }
 
     private void Iscoming()
     {
         if (coming.FromEntranceHall)
-            playerPos.position = new Vector3(30.21414f, -0.2867637f, 0f);
+            playerPos.position = new Vector3(-22.08349f, -1.158723f, 0f);
 
-       
+
     }
 }

@@ -8,19 +8,28 @@ public class Iscoming : MonoBehaviour
     public bool FromEntranceHall=false;
     public bool FromWestWing=false;
     public bool FromEastWing=false;
+    public int Objective;
 
+    [SerializeField] PauseScript pause;
 
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if(FromEntranceHall||FromWestWing||FromWestWing)
+        Destroy(gameObject);
+    }
     void Start()
     {
-        
+        pause = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseScript>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        pause.ObjetivoAtual= Objective;
     }
 
     void iscoming()

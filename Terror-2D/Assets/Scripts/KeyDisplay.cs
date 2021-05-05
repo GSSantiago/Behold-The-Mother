@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class KeyDisplay : MonoBehaviour
 {
-    public BoxCollider2D bc;
+    public CapsuleCollider2D Ccollider;
     public Image item_image;
     public bool item = false;
 
@@ -28,12 +28,13 @@ public class KeyDisplay : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D Ccollider)
     {
-        if (collision.gameObject.tag == "Player")
+        if (Ccollider.gameObject.tag == "Player")
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Debug.Log("Oi");
                 item = true;
             }
         }

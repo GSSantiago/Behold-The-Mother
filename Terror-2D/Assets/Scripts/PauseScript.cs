@@ -17,6 +17,8 @@ public class PauseScript : MonoBehaviour
 
     [SerializeField] ObjeticveList objetivoLista;
 
+    [SerializeField] Iscoming objetivo;
+
 
 
     void Start()
@@ -25,9 +27,11 @@ public class PauseScript : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         PauseMenu.SetActive(false);
+        objetivo = GameObject.FindGameObjectWithTag("Coming").GetComponent<Iscoming>();
     }
     void Update()
     {
+        ObjetivoAtual = objetivo.Objective;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(GamePaused)
