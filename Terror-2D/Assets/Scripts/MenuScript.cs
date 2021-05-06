@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
     public GameObject MenuCanvas;
     public GameObject InstructionCanvas;
     public GameObject CreditsCanvas;
-
 
     public void Start()
     {
@@ -18,6 +18,7 @@ public class MenuScript : MonoBehaviour
         InstructionCanvas.SetActive(false);
         CreditsCanvas.SetActive(false);
     }
+
     public void StartGame()
     {
         SceneManager.LoadScene("Entrance Hall");
@@ -50,4 +51,5 @@ public class MenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
 }
