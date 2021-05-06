@@ -16,6 +16,8 @@ TagManager:
   - Sanity
   - Dialog
   - GameManager
+  - Key
+  - Pickaxe
   layers:
   - Default
   - TransparentFX

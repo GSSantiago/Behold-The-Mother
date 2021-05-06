@@ -9,23 +9,14 @@ public class KeyDisplay : MonoBehaviour
     public Image item_image;
     public bool item = false;
 
+    [SerializeField] Iscoming objetivo;
+    [SerializeField] AudioSource Keypicked;
+
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            item = !item;
-        }
-
-        if (item)
-        {
-            item_image.enabled = true;
-        }
-        else
-        {
-            item_image.enabled = false;
-        }
+    
     }
 
     void OnTriggerStay2D(Collider2D Ccollider)
@@ -34,9 +25,21 @@ public class KeyDisplay : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Oi");
-                item = true;
+                StartCoroutine(Pick());  
             }
         }
+    }
+
+    IEnumerator Pick()
+    {
+        Keypicked.Play();
+        objetivo = GameObject.FindGameObjectWithTag("Coming").GetComponent<Iscoming>();
+        objetivo.isKeyPicked = true;
+        objetivo.Objective++;
+        objetivo.KeyDisplay = true;
+        yield return new WaitForSeconds(0.25f);
+        Destroy(gameObject);
+
+
     }
 }

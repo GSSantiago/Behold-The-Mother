@@ -13,19 +13,7 @@ public class PickaxeDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            item = !item;
-        }
-
-        if (item)
-        {
-            item_image.enabled = true;
-        }
-        else
-        {
-            item_image.enabled = false;
-        }
+      
     }
 
     void OnTriggerStay2D(Collider2D collision)

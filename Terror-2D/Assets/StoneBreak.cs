@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StoneBreak : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class StoneBreak : MonoBehaviour
     public GameManagerWest GMW;
 
     [SerializeField] Iscoming objetivo;
+    [SerializeField] AudioSource stone;
+
+
+    [SerializeField] GameObject transition;
 
 
     private bool inside;
@@ -38,17 +43,26 @@ public class StoneBreak : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (inside && !dialogM.isFinished)
+   private void Update()
+   {
+     if (inside && !dialogM.isFinished)
         {
             if (Input.GetKeyDown(KeyCode.E) && !dialogBox.activeSelf)
-            {
-                DialogManager.Instance.ShowDialog(dialog);
-                IsFinishedDialogWall = true;
-            }
+             {
+                if (!objetivo.ispickaxePicked)
+                   {
+                     DialogManager.Instance.ShowDialog(dialog);
+                            IsFinishedDialogWall = true;
+                   }
+                else
+                   {
+                    StartCoroutine(Break());
+                    stone.Play();
+                    Debug.Log("To aqui");
 
-        }
+                    }
+             }
+         }
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -64,9 +78,19 @@ public class StoneBreak : MonoBehaviour
         if (collider.gameObject.tag == "Player")
             inside = false;
 
-        if (IsFinishedDialogWall && collider.gameObject.tag == "Player")
+        if (IsFinishedDialogWall && collider.gameObject.tag == "Player" && !objetivo.ispickaxePicked)
             objetivo.Objective++;
            
+    }
+    IEnumerator Break()
+    {
+        transition.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        stone.Stop();
+        transition.SetActive(false);
+        Destroy(gameObject);
+
+
     }
 
 
