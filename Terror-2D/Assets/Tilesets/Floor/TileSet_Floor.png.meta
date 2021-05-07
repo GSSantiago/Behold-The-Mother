@@ -56,6 +56,24 @@ TextureImporter:
   - first:
       213: -8427932420996447819
     second: TileSet_Floor_17
+  - first:
+      213: -5406188105480003748
+    second: TileSet_Floor_18
+  - first:
+      213: -3205285193770419438
+    second: TileSet_Floor_19
+  - first:
+      213: 32413225255646185
+    second: TileSet_Floor_20
+  - first:
+      213: 8017043635583013632
+    second: TileSet_Floor_21
+  - first:
+      213: -8122673533766527737
+    second: TileSet_Floor_22
+  - first:
+      213: -1942744847333924661
+    second: TileSet_Floor_23
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -228,8 +246,8 @@ TextureImporter:
       name: TileSet_Floor_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 64
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -249,7 +267,7 @@ TextureImporter:
       name: TileSet_Floor_5
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -270,7 +288,7 @@ TextureImporter:
       name: TileSet_Floor_6
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 48
         width: 16
         height: 16
@@ -291,7 +309,7 @@ TextureImporter:
       name: TileSet_Floor_7
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 48
         width: 16
         height: 16
@@ -312,8 +330,8 @@ TextureImporter:
       name: TileSet_Floor_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 48
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -333,8 +351,8 @@ TextureImporter:
       name: TileSet_Floor_9
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
+        x: 64
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -354,7 +372,7 @@ TextureImporter:
       name: TileSet_Floor_10
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 32
         width: 16
         height: 16
@@ -375,8 +393,8 @@ TextureImporter:
       name: TileSet_Floor_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -396,8 +414,8 @@ TextureImporter:
       name: TileSet_Floor_12
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -417,8 +435,8 @@ TextureImporter:
       name: TileSet_Floor_13
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 64
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -438,7 +456,7 @@ TextureImporter:
       name: TileSet_Floor_14
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 16
         width: 16
         height: 16
@@ -459,8 +477,8 @@ TextureImporter:
       name: TileSet_Floor_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 16
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -480,8 +498,8 @@ TextureImporter:
       name: TileSet_Floor_16
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 32
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -501,8 +519,8 @@ TextureImporter:
       name: TileSet_Floor_17
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 48
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -514,6 +532,132 @@ TextureImporter:
       bones: []
       spriteID: 5b1428fbd18f90b80800000000000000
       internalID: -8427932420996447819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileSet_Floor_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f1cefaf8c59f4b0800000000000000
+      internalID: -5406188105480003748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileSet_Floor_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bbe7d391a8483d0800000000000000
+      internalID: -3205285193770419438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileSet_Floor_20
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e3336918a7237000800000000000000
+      internalID: 32413225255646185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileSet_Floor_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0035bbfd5b2424f60800000000000000
+      internalID: 8017043635583013632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileSet_Floor_22
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7051161f477764f80800000000000000
+      internalID: -8122673533766527737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileSet_Floor_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0e07dbadbf905e0800000000000000
+      internalID: -1942744847333924661
       vertices: []
       indices: 
       edges: []
