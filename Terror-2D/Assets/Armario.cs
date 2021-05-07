@@ -139,6 +139,7 @@ public class Armario : MonoBehaviour
         }
         //Desabilitando componentes do player para se manter escondido
         //playerCollider.enabled = false;
+        playerMovement.Idle();
         playerMovement.enabled = false;
         flashlight.enabled = false;
         enemyfov.viewDistance = 0;

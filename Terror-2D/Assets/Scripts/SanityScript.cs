@@ -15,7 +15,15 @@ public class SanityScript : MonoBehaviour
     float timeCounter;
     int repeticoes;
 
+    private Scene scene;
+    private string sceneName;
 
+
+
+    private void OnLevelWasLoaded(int level)
+    {
+        verify();
+    }
 
     void Start()
     {
@@ -25,6 +33,8 @@ public class SanityScript : MonoBehaviour
         cor_atual.a = (1 - (sanity_value / 100));
         sanity_image.color = cor_atual;
         //StartCoroutine(pulse());
+        verify();
+        
     }
 
     void Update()
@@ -103,6 +113,23 @@ public class SanityScript : MonoBehaviour
             ciclo = false;
             //}
             // yield return null;
+        }
+    }
+
+    void verify()
+    {
+        scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
+        if (sceneName == "MenuPrincipal")
+        {
+            sanity_image.enabled = false;
+            Debug.Log("SO VIP");
+        }
+        else
+        {
+            sanity_image.enabled = true;
+            Debug.Log("SO PIV");
+
         }
     }
 }

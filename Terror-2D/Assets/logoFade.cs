@@ -31,7 +31,6 @@ public class logoFade : MonoBehaviour
         anim = true;
         for(i=100; i >= 0; i--)
         {
-            Debug.Log(cor_atual);
             cor_atual.a -= 0.01f;
             yield return new WaitForSeconds(0.015f);
             logo.color = cor_atual;

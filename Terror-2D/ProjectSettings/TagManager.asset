@@ -18,6 +18,7 @@ TagManager:
   - GameManager
   - Key
   - Pickaxe
+  - CircleSanity
   layers:
   - Default
   - TransparentFX

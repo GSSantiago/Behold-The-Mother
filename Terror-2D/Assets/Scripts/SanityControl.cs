@@ -60,6 +60,8 @@ public class SanityControl : MonoBehaviour
         pixelCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PixelPerfectCamera>();
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         CameraZ = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        CircleSanity = GameObject.FindGameObjectWithTag("CircleSanity").GetComponent<GameObject>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
     }
 
     IEnumerator efeitos()
