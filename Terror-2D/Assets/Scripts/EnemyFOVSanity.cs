@@ -49,6 +49,9 @@ public class EnemyFOVSanity : MonoBehaviour
         GetComponent<MeshFilter>().mesh = malha;
         origin = Vector3.zero;
         fov = 360f; //Original 90f
+
+        sanity = GameObject.FindGameObjectWithTag("Sanity").GetComponent<SanityScript>();
+
         //raycount = 4;
     }
 

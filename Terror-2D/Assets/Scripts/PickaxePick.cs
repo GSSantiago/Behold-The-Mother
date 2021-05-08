@@ -33,10 +33,10 @@ public class PickaxePick : MonoBehaviour
             {
                 IspickaxePicked = true;
                 pickaxe.ispickaxePicked = true;
-                srl.sortingOrder = 4;
+                srl.sortingOrder = 0;
                 pickaxe.PickaxeDisplay = true;
                 pick.Play();
-
+                
             }
 
         }

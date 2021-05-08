@@ -14,6 +14,7 @@ public class MenuScript : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+       
         MenuCanvas.SetActive(true);
         InstructionCanvas.SetActive(false);
         CreditsCanvas.SetActive(false);
@@ -44,7 +45,7 @@ public class MenuScript : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("Entrance Hall");
+        SceneManager.LoadScene("MenuPrincipal");
     }
 
     public void Quit()

@@ -12,7 +12,7 @@ public class SanityControl : MonoBehaviour
     public Transform enemy;
     public SanityScript sanity;
     public PlayerMovement PlayerMovement;
-    public PixelPerfectCamera pixelCamera;
+    //public PixelPerfectCamera pixelCamera;
     public Camera camera;
     public Transform CameraZ;
 
@@ -26,26 +26,30 @@ public class SanityControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scene = SceneManager.GetActiveScene();
-
-        sceneName = scene.name;
-
-        StartCoroutine(efeitos());
+        /*StartCoroutine(efeitos());
         StartCoroutine(crazyCamera());
-        StartCoroutine(InvertedCamera());
+        StartCoroutine(InvertedCamera());*/
     }
 
 
     // Update is called once per frame
     void Update()
     {
+
         //5 É uma distancia boa
         if (sceneName == "West Wing")
         {
+           
             if (Vector3.Distance(Player.position, enemy.position) > 5)
                 CircleSanity.SetActive(false);
             else
                 CircleSanity.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                EfeitoRandom = 2;
+                Debug.Log("Efeito é" + EfeitoRandom);
+            }
         }
 
 
@@ -54,14 +58,20 @@ public class SanityControl : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
+        scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
         //Getcomponent
+        CircleSanity = GameObject.Find("/IA/CircleSanity");
+
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         PlayerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        pixelCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PixelPerfectCamera>();
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         CameraZ = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
-        CircleSanity = GameObject.FindGameObjectWithTag("CircleSanity").GetComponent<GameObject>();
         enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
+
+        StartCoroutine(efeitos());
+        StartCoroutine(crazyCamera());
+        StartCoroutine(InvertedCamera());
     }
 
     IEnumerator efeitos()
@@ -70,6 +80,7 @@ public class SanityControl : MonoBehaviour
         {
             if (sanity.sanity_value < 75)
             {
+
                 switch (EfeitoRandom)
                 {
                     case 1:
@@ -88,7 +99,7 @@ public class SanityControl : MonoBehaviour
                         //foreverSong();
                         break;
                     default:
-                        EfeitoRandom = Random.Range(1, 3);
+                        EfeitoRandom = Random.Range(1, 4);
                         Debug.Log("Efeito é" + EfeitoRandom);
                         break;
                 }
@@ -115,21 +126,21 @@ public class SanityControl : MonoBehaviour
     {
         while (true)
         {
-            int i;
+            float i;
 
             if (crazy == true)
             {
-                CameraRandom = Random.Range(21, 35);
-                for (i = pixelCamera.assetsPPU; i < CameraRandom; i += 1)
+                CameraRandom = Random.Range(8, 10);
+                for (i = camera.orthographicSize; i < CameraRandom; i += 1f)
                 {
-                    pixelCamera.assetsPPU += 1;
+                    camera.orthographicSize += 1;
                     yield return new WaitForSeconds(timeCounter / 10);
 
                 }
 
-                for (i = pixelCamera.assetsPPU; i > 16; i -= 1)
+                for (i = camera.orthographicSize; i > 8; i -= 1f)
                 {
-                    pixelCamera.assetsPPU -= 1;
+                    camera.orthographicSize -= 1;
                     yield return new WaitForSeconds(timeCounter / 10);
 
                 }
@@ -144,7 +155,7 @@ public class SanityControl : MonoBehaviour
     {
         while (true)
         {
-            pixelCamera.enabled = false;
+            //pixelCamera.enabled = false;
 
             if (inverted == true)
             {
@@ -182,9 +193,10 @@ public class SanityControl : MonoBehaviour
     {
         EfeitoRandom = 0;
         crazy = false;
+        inverted = false;
+        CameraZ.transform.rotation = Quaternion.Euler(0, 0, 0f);
         PlayerMovement.changeControl = false;
         camera.orthographicSize = 7.25f;
-        pixelCamera.enabled = true;
     }
 
 

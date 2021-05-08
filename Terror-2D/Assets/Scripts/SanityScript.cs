@@ -123,12 +123,10 @@ public class SanityScript : MonoBehaviour
         if (sceneName == "MenuPrincipal")
         {
             sanity_image.enabled = false;
-            Debug.Log("SO VIP");
         }
         else
         {
             sanity_image.enabled = true;
-            Debug.Log("SO PIV");
 
         }
     }

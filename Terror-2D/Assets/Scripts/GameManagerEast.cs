@@ -29,7 +29,7 @@ public class GameManagerEast : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        cameraPos.position = new Vector3(Mathf.Clamp(playerPos.position.x, -13.58001f, 31.57075f),
+        cameraPos.position = new Vector3(Mathf.Clamp(playerPos.position.x, -13.58001f, 30.66886f),
                                         Mathf.Clamp(playerPos.position.y, -3.008778f, 24.94313f), -80f);
 
 
