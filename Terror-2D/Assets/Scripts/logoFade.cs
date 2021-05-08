@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class logoFade : MonoBehaviour
 {
-    public GameObject MenuCanvas;
-    public GameObject logoCanvas;
     public Image logo;
-    bool anim = false;
+    public bool anim = false;
     Color cor_atual;
     int i;
 
@@ -28,15 +27,15 @@ public class logoFade : MonoBehaviour
 
     IEnumerator fade()
     {
+
         anim = true;
-        for(i=100; i >= 0; i--)
+        for (i=100; i >= 0; i--)
         {
             cor_atual.a -= 0.01f;
             yield return new WaitForSeconds(0.015f);
             logo.color = cor_atual;
         }
 
-        logoCanvas.SetActive(false);
-        MenuCanvas.SetActive(true);
+        SceneManager.LoadScene("MenuPrincipal");
     }
 }
