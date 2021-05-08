@@ -8,6 +8,7 @@ public class MenuScript : MonoBehaviour
 {
     public GameObject MenuCanvas;
     public GameObject InstructionCanvas;
+    public GameObject InstructionCanvasPg2;
     public GameObject CreditsCanvas;
 
     public void Start()
@@ -17,6 +18,7 @@ public class MenuScript : MonoBehaviour
        
         MenuCanvas.SetActive(true);
         InstructionCanvas.SetActive(false);
+        InstructionCanvasPg2.SetActive(false);
         CreditsCanvas.SetActive(false);
     }
 
@@ -30,6 +32,19 @@ public class MenuScript : MonoBehaviour
         MenuCanvas.SetActive(false);
         InstructionCanvas.SetActive(true);
     }
+
+    public void NextPageInstruction()
+    {
+        InstructionCanvas.SetActive(false);
+        InstructionCanvasPg2.SetActive(true);
+    }
+
+    public void PreviousPageInstruction()
+    {
+        InstructionCanvas.SetActive(true);
+        InstructionCanvasPg2.SetActive(false);
+    }
+
     public void Credits()
     {
         MenuCanvas.SetActive(false);
@@ -40,6 +55,7 @@ public class MenuScript : MonoBehaviour
     {
         MenuCanvas.SetActive(true);
         InstructionCanvas.SetActive(false);
+        InstructionCanvasPg2.SetActive(false);
         CreditsCanvas.SetActive(false);
     }
 
