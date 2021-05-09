@@ -13,10 +13,6 @@ public class GameManagerHall : MonoBehaviour
 
     private Iscoming coming;
 
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +30,10 @@ public class GameManagerHall : MonoBehaviour
 
         Iscoming();
         
-        
-
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
+    
     void LateUpdate()
     {
         cameraPos.position = new Vector3(Mathf.Clamp(playerPos.position.x, -7f, 7f),

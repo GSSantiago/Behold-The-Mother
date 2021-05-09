@@ -21,10 +21,16 @@ public class CopyTilemapColor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!mySM.enabled){
-            mySR.color = Color.white;
-        }else{
-            mySR.color = tilemap.color;
+        if (mySM != null)
+        {
+            if (!mySM.enabled)
+            {
+                mySR.color = Color.white;
+            }
+            else
+            {
+                mySR.color = tilemap.color;
+            }
         }
         //ok se voce ta lendo isso e falando meu deus
         // demorou quanto tempo pra faze issu, dois segundo

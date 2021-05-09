@@ -34,9 +34,9 @@ public class Iscoming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pause.ObjetivoAtual= Objective;
-        key.enabled = KeyDisplay;
-        pickaxe.enabled= PickaxeDisplay;
+        if (pause != null) { pause.ObjetivoAtual = Objective; }
+        if (key != null) { key.enabled = KeyDisplay; }
+        if (pickaxe != null) { pickaxe.enabled = PickaxeDisplay; }
 
     }
 
