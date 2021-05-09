@@ -19,7 +19,16 @@ public class PauseScript : MonoBehaviour
 
     [SerializeField] Iscoming objetivo;
 
+    private GameObject Canvas_Sanity;
+    private GameObject GameManager;
 
+    private void OnLevelWasLoaded(int level)
+    {
+        Canvas_Sanity = GameObject.Find("Canvas_Sanity");
+        GameManager = GameObject.Find("GameManager");
+
+
+    }
 
     void Start()
     {
@@ -68,6 +77,8 @@ public class PauseScript : MonoBehaviour
 
     public void Menu()
     {
+        Destroy(GameManager);
+        Destroy(Canvas_Sanity);
         SceneManager.LoadScene("MenuPrincipal");
     }
 

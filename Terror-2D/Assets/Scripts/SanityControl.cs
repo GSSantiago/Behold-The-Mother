@@ -70,7 +70,7 @@ public class SanityControl : MonoBehaviour
         enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
 
         StartCoroutine(efeitos());
-        StartCoroutine(crazyCamera());
+      //  StartCoroutine(crazyCamera());
         StartCoroutine(InvertedCamera());
     }
 
@@ -87,9 +87,9 @@ public class SanityControl : MonoBehaviour
                         twistedControl();
                         break;
 
-                    case 2:
-                        crazy = true;
-                        break;
+                    //case 2:
+                      //  crazy = true;
+                        //break;
 
                     case 3:
                         inverted = true;
