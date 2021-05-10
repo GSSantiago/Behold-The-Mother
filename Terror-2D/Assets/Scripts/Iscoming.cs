@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Iscoming : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class Iscoming : MonoBehaviour
     [SerializeField] Image key;
     [SerializeField] Image pickaxe;
 
+    private Scene scene;
+    private string sceneName;
+    private AudioSource ambienceSound;
+
 
     // Start is called before the first frame update
 
@@ -29,7 +34,13 @@ public class Iscoming : MonoBehaviour
         pause = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseScript>();
         key = GameObject.FindGameObjectWithTag("Key").GetComponent<Image>();
         pickaxe = GameObject.FindGameObjectWithTag("Pickaxe").GetComponent<Image>();
+        ambienceSound = GetComponent<AudioSource>();
 
+        scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
+
+        if (sceneName == "Entrance Hall" && !ambienceSound.isPlaying)
+            ambienceSound.Play();
     }
     // Update is called once per frame
     void Update()
