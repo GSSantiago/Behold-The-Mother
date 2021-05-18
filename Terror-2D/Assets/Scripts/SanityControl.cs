@@ -23,6 +23,24 @@ public class SanityControl : MonoBehaviour
     bool crazy;
     bool inverted;
 
+    private void OnLevelWasLoaded(int level)
+    {
+        scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
+        //Getcomponent
+        CircleSanity = GameObject.Find("/IA/CircleSanity");
+
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        PlayerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        CameraZ = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
+
+        StartCoroutine(efeitos());
+        //  StartCoroutine(crazyCamera());
+        StartCoroutine(InvertedCamera());
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,23 +74,7 @@ public class SanityControl : MonoBehaviour
         
     }
 
-    private void OnLevelWasLoaded(int level)
-    {
-        scene = SceneManager.GetActiveScene();
-        sceneName = scene.name;
-        //Getcomponent
-        CircleSanity = GameObject.Find("/IA/CircleSanity");
-
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        PlayerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        CameraZ = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
-
-        StartCoroutine(efeitos());
-      //  StartCoroutine(crazyCamera());
-        StartCoroutine(InvertedCamera());
-    }
+   
 
     IEnumerator efeitos()
     {

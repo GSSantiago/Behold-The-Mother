@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     public bool changeControl;
 
+    [SerializeField] StaminaBar staminabar;
+
     public Vector2 moveDir;
     public Vector2 movement;
 
@@ -41,10 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (isIdle)
         {
-            //Idle
-            //rb.velocity = Vector2.zero;
-            //anim.SetBool("Ismove", false);
-            //anim.SetBool("Isrun", false);
             Idle();
         }
         else
@@ -52,13 +50,22 @@ public class PlayerMovement : MonoBehaviour
             //Moving
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                //Running
-                anim.SetBool("Isrun", true);
-                moveSpeed = runSpeed;//Aumentando a velocidade
+                if (staminabar.currentStamina > 0)
+                {
+                    //Running
+                    anim.SetBool("Isrun", true);
+                    moveSpeed = runSpeed;//Aumentando a velocidade
+                    staminabar.UseStamina(0.5f);
+                }
+                else
+                {
+                    //Not Stamina
+                    anim.SetBool("Isrun", false);
+                    moveSpeed = normalSpeed;//Definindo a velocidade para o padr�o
+                }
             }
             else
             {
-                //Not Running
                 anim.SetBool("Isrun", false);
                 moveSpeed = normalSpeed;//Definindo a velocidade para o padr�o
             }

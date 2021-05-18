@@ -17,7 +17,7 @@ public class Flashlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //player = GameObject.Find("Player");
         PlayerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         //modo padrão da luz
         luz.pointLightOuterAngle = 360;
@@ -35,8 +35,6 @@ public class Flashlight : MonoBehaviour
         bool tecla_a = Input.GetKey(KeyCode.A);
         bool tecla_s = Input.GetKey(KeyCode.S);
         bool tecla_d = Input.GetKey(KeyCode.D);
-
-        
 
         //encontra a direção do mouse na tela
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -64,42 +62,43 @@ public class Flashlight : MonoBehaviour
         if(flicker == false) {
             StartCoroutine(lightFlicker());
         }
+        if (gameObject.name == "Point Light 2D") {
 
-        if(PlayerMove.moveDir.x == -1)
-        {
-            //posicao da lanterna para a esqueda
-            pos = player.transform.position;
-            pos.x -= 0.55f;
-            pos.y += 0.10f;
-            luz.transform.position = pos;
-        }
-        if (PlayerMove.moveDir.x == 1)
-        {
-            //posicao padrao da lanterna
-            pos = player.transform.position;
-            pos.x += 0.55f;
-            pos.y += 0.10f;
-            luz.transform.position = pos;
-        }
+            if (PlayerMove.moveDir.x == -1)
+            {
+                //posicao da lanterna para a esqueda
+                pos = player.transform.position;
+                pos.x -= 0.55f;
+                pos.y += 0.10f;
+                luz.transform.position = pos;
+            }
+            if (PlayerMove.moveDir.x == 1)
+            {
+                //posicao padrao da lanterna
+                pos = player.transform.position;
+                pos.x += 0.55f;
+                pos.y += 0.10f;
+                luz.transform.position = pos;
+            }
 
-        if (PlayerMove.moveDir.y == 1)
-        {
-            //posicao da lanterna para cima
-            pos = player.transform.position;
-            pos.x -= 0.20f;
-            pos.y += 0.45f;
-            luz.transform.position = pos;
-        }
+            if (PlayerMove.moveDir.y == 1)
+            {
+                //posicao da lanterna para cima
+                pos = player.transform.position;
+                pos.x -= 0.20f;
+                pos.y += 0.45f;
+                luz.transform.position = pos;
+            }
 
-        if (PlayerMove.moveDir.y == -1)
-        {
-            //posicao da lanterna para baixo
-            pos = player.transform.position;
-            pos.x += 0.20f;
-            pos.y -= 0.15f;
-            luz.transform.position = pos;
+            if (PlayerMove.moveDir.y == -1)
+            {
+                //posicao da lanterna para baixo
+                pos = player.transform.position;
+                pos.x += 0.20f;
+                pos.y -= 0.15f;
+                luz.transform.position = pos;
+            }
         }
-
     }
 
     void mode0()
