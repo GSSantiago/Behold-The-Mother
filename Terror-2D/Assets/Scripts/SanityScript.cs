@@ -39,10 +39,7 @@ public class SanityScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.K))
-        {
-            sanity_value = 100;
-        }
+       
 
         if (sanity_value <= 0)
         {

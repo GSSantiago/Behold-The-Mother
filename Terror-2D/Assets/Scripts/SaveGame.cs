@@ -6,6 +6,7 @@ public class SaveGame : MonoBehaviour
 {
     public Collider2D collider;
     public SanityScript sanity;
+    public SanityControl sanityControl;
 
     public GameObject dialogBox;
     public DialogManager dialogM;
@@ -18,6 +19,8 @@ public class SaveGame : MonoBehaviour
     {
         collider = GetComponent<Collider2D>();
         sanity = GameObject.FindGameObjectWithTag("Sanity").GetComponent<SanityScript>();
+        sanityControl = GameObject.FindGameObjectWithTag("SanityControl").GetComponent<SanityControl>();
+
 
         //dialogBox = GameObject.FindGameObjectWithTag("Dialog").GetComponent<GameObject>();
         dialogM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<DialogManager>();
@@ -33,6 +36,8 @@ public class SaveGame : MonoBehaviour
             {
                 DialogManager.Instance.ShowDialog(dialog);
                 sanity.sanity_value = 100;
+                sanityControl.isSanityLow = true;
+                sanityControl.allNormal();
             }
 
         }

@@ -111,7 +111,7 @@ public class Armario : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D c)
     {
-        if (c.gameObject.tag == "Player")
+        if (c.gameObject.tag == "Player" && playerMovement.enabled)
         {
             inside = false;
         }
@@ -138,9 +138,9 @@ public class Armario : MonoBehaviour
            yield return new WaitForSeconds(3 / 10);
         }
         //Desabilitando componentes do player para se manter escondido
-        //playerCollider.enabled = false;
         playerMovement.Idle();
         playerMovement.enabled = false;
+        playerCollider.enabled = false;
         flashlight.enabled = false;
         enemyfov.viewDistance = 0;
     }
@@ -148,14 +148,15 @@ public class Armario : MonoBehaviour
     {
         float opacidade = 0f;
 
+        playerCollider.enabled = true;
+
         while (opacidade <= 1f)
         {
-            opacidade += 0.01f;//0.05
+            opacidade += 0.05f;//0.05
             playerSprite.color = new Color(1f, 1f, 1f, opacidade);
             yield return new WaitForSeconds(3 / 10);
         }
         //Habilitando componentes do player para sair do esconderijo
-        //playerCollider.enabled = true;
         playerMovement.enabled = true;
         flashlight.enabled = true;
         enemyfov.viewDistance = 20;
