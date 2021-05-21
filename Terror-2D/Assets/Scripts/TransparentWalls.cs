@@ -21,7 +21,7 @@ public class TransparentWalls : MonoBehaviour
     //private float previousAlpha = 1;
     private float t = 0; //Usado pelo lerp()
     public float duration = 0.5f; //Duração em segundos da transição
-    private Color transparency = new Color(1f, 1f, 1f, 0.2f);
+    private Color transparency = new Color(1f, 1f, 1f, 0.4f);
     private void Awake() {
         Instance = this;
     }
