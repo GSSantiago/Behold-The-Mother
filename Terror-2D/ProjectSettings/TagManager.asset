@@ -19,6 +19,9 @@ TagManager:
   - Key
   - Pickaxe
   - CircleSanity
+  - SanityControl
+  - DialogBox
+  - DialogText
   layers:
   - Default
   - TransparentFX

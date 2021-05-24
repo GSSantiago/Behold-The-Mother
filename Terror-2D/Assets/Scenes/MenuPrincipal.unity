@@ -253,6 +253,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434506, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: m_TagString
+      value: SanityControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 377295560}
     - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
         type: 3}
       propertyPath: voices
@@ -260,8 +270,48 @@ PrefabInstance:
       objectReference: {fileID: 377295558}
     - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
         type: 3}
+      propertyPath: ambience
+      value: 
+      objectReference: {fileID: 756665441}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
       propertyPath: timeCounter
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: audio.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: lettersPerSecond
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Eu tentei, eu realmente tentei
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: "N\xE3o me machuque, por favor"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: dialog.lines.Array.data[2]
+      value: "N\xE3o fui eu, n\xE3o fa\xE7a isso"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747757959107434508, guid: f0b42065d8bc98543a47b00c7278f22d,
+        type: 3}
+      propertyPath: dialog.lines.Array.data[3]
+      value: "Um,dois,tr\xEAs, vou te pegar..."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b42065d8bc98543a47b00c7278f22d, type: 3}
@@ -1709,7 +1759,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4305b216edb419f4090d4bb6fc7de082, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f3c0b0ab3ad755b459d31944423c5481, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 0.7
@@ -1795,6 +1845,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &377295560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377295556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cc7b185ad7e7a49bf3ce1b91a852b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - number: 0
+    clip: {fileID: 8300000, guid: 2f9b9cb98448e44479e2435e3a21701e, type: 3}
+    volume: 1
+    pitch: 0.9
+    stereoPan: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - number: 1
+    clip: {fileID: 8300000, guid: 529a1b57ab8a82147a7682834a06afc3, type: 3}
+    volume: 1
+    pitch: 1
+    stereoPan: -1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - number: 2
+    clip: {fileID: 8300000, guid: 1b25fae04ddf6414b95fdbc07d274d35, type: 3}
+    volume: 1
+    pitch: 0.8
+    stereoPan: 0
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - number: 3
+    clip: {fileID: 8300000, guid: 6f48d35d4d173104e962875de8196509, type: 3}
+    volume: 1
+    pitch: 0.75
+    stereoPan: 0
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - number: 4
+    clip: {fileID: 8300000, guid: 86dda21152f259f4aa6aeed6eae1776a, type: 3}
+    volume: 1
+    pitch: 1
+    stereoPan: 0
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!1 &378050005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,6 +2530,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696077369}
   m_CullTransparentMesh: 0
+--- !u!1 &756665440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2106096184321246483, guid: a03fb240802d50a4580b1cd6e073156e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1966982932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &756665441 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2106096184321246495, guid: a03fb240802d50a4580b1cd6e073156e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1966982932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &756665442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756665440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3a9a9ca839bef46a50a2491eeeb98a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  playerMovement: {fileID: 0}
+  lettersPerSecond: 45
+  isFinished: 0
 --- !u!1 &848551666
 GameObject:
   m_ObjectHideFlags: 0
