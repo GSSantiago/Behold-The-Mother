@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     public Animator anim;
     public bool changeControl;
+    public bool isRunning;
 
     [SerializeField] StaminaBar staminabar;
 
@@ -56,18 +57,22 @@ public class PlayerMovement : MonoBehaviour
                     anim.SetBool("Isrun", true);
                     moveSpeed = runSpeed;//Aumentando a velocidade
                     staminabar.UseStamina(0.5f);
+                    isRunning = true;
                 }
                 else
                 {
                     //Not Stamina
                     anim.SetBool("Isrun", false);
                     moveSpeed = normalSpeed;//Definindo a velocidade para o padr�o
+                    isRunning = false;
                 }
             }
             else
             {
                 anim.SetBool("Isrun", false);
                 moveSpeed = normalSpeed;//Definindo a velocidade para o padr�o
+                isRunning = false;
+
             }
             rb.velocity = moveDir * moveSpeed;
 
