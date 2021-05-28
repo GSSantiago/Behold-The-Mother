@@ -10,6 +10,7 @@ public class PauseScript : MonoBehaviour
 {
     public static bool GamePaused = false;
     public GameObject PauseMenu;
+    public GameObject OptionsMenu;
     public Volume blurVolume;
 
     [SerializeField] Text ObjectiveText;
@@ -36,6 +37,7 @@ public class PauseScript : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         PauseMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
         objetivo = GameObject.FindGameObjectWithTag("Coming").GetComponent<Iscoming>();
     }
     void Update()
@@ -57,6 +59,7 @@ public class PauseScript : MonoBehaviour
     public void Resume()
     {
         PauseMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
         Time.timeScale = 1f;
         GamePaused = false;
         Cursor.visible = false;
@@ -67,6 +70,7 @@ public class PauseScript : MonoBehaviour
     void Pause()
     {
         PauseMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
         Time.timeScale = 0f;
         GamePaused = true;
         Cursor.visible = true;
@@ -82,8 +86,21 @@ public class PauseScript : MonoBehaviour
         SceneManager.LoadScene("MenuPrincipal");
     }
 
+    public void Options()
+    {
+        PauseMenu.SetActive(false);
+        OptionsMenu.SetActive(true);
+    }
+
+    public void Backtopause()
+    {
+        PauseMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
+    }
+
     public void objetivos()
     {
         ObjectiveText.text = objetivoLista.Lines[ObjetivoAtual];
     }
+
 }

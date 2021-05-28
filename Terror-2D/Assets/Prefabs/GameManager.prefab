@@ -48,8 +48,14 @@ MonoBehaviour:
   FromEntranceHall: 0
   FromWestWing: 0
   FromEastWing: 0
+  ispickaxePicked: 0
+  isKeyPicked: 0
   Objective: 0
+  PickaxeDisplay: 0
+  KeyDisplay: 0
   pause: {fileID: 0}
+  key: {fileID: 0}
+  pickaxe: {fileID: 0}
 --- !u!114 &2106096184321246492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +77,8 @@ AudioSource:
   m_GameObject: {fileID: 2106096184321246483}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ccab792b5c8f9f443956b049f0079849,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: a6baf2f6763bb1546bed798f212f0abe, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.806
