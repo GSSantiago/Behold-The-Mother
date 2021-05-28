@@ -17,7 +17,8 @@ public class Porta : MonoBehaviour
     public AudioClip acClose;
 
     private bool inside;
-    private bool open;
+    public bool open;
+    public bool enemyInside;
 
     public int time;
     private float t;
@@ -55,11 +56,7 @@ public class Porta : MonoBehaviour
             {
 
                 t = 0;
-                myAnim.SetBool("Interagido", true);
-                mySRClosed.enabled = !mySRClosed;
-                mySROpen.enabled = !mySROpen;
-                open = !open;
-                myAS.pitch = Random.Range(1f, 3f);
+                OpenDoor();
                 if (open)
                 {
                     myAS.PlayOneShot(acOpen, Random.Range(0.8f, 1f));
@@ -83,22 +80,44 @@ public class Porta : MonoBehaviour
         }
         collision.enabled = !open;
 
-        ChangeLayer();
+       
+    }
+
+    public void OpenDoor()
+    {
+        myAnim.SetBool("Interagido", true);
+        mySRClosed.enabled = !mySRClosed;
+        mySROpen.enabled = !mySROpen;
+        open = !open;
+        myAS.pitch = Random.Range(1f, 3f);
+        Debug.Log("Terminei de abrir");
     }
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.gameObject.tag == "Player")
+        if (c.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Player dentro da area");
+
             inside = true;
         }
+
+        if (c.gameObject.CompareTag("EC"))
+        {
+            Debug.Log("Inimigo dentro da area");
+            enemyInside = true;
+        }
     }
+
+   
     private void OnTriggerExit2D(Collider2D c)
     {
         if (c.gameObject.tag == "Player")
         {
             inside = false;
         }
+        if (c.gameObject.tag == "EC")
+            enemyInside = false;
 
     }
 

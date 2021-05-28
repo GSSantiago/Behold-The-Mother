@@ -22,6 +22,8 @@ TagManager:
   - SanityControl
   - DialogBox
   - DialogText
+  - EnemyOpenDoor
+  - EC
   layers:
   - Default
   - TransparentFX

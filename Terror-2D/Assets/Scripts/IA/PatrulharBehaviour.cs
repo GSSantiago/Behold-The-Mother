@@ -9,12 +9,14 @@ public class PatrulharBehaviour : StateMachineBehaviour
     public PlayerMovement player;
 
 
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         patrol = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyPatrol>();
         fov = GameObject.FindGameObjectWithTag("FOV").GetComponent<EnemyFOV>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
 
     }
 
@@ -30,7 +32,7 @@ public class PatrulharBehaviour : StateMachineBehaviour
 
         }
 
-        if(player.isRunning)
+        if (player.isRunning)
         {
             animator.SetBool("Ispatrulhando", false);
             animator.SetBool("Isverificando", true);
@@ -38,10 +40,10 @@ public class PatrulharBehaviour : StateMachineBehaviour
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
+    // override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // {
+    //
+    // }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

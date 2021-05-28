@@ -7,6 +7,8 @@ public class PerseguirBehaviour : StateMachineBehaviour
 {
     public EnemyPatrol patrulha;
     public EnemyFOV fov;
+    public EnemyOpenDoor EOD;
+
     public AudioSource PerseguicaoSom;
 
     public AudioSource[] sounds;
@@ -18,9 +20,12 @@ public class PerseguirBehaviour : StateMachineBehaviour
         patrulha = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyPatrol>();
         fov = GameObject.FindGameObjectWithTag("FOV").GetComponent<EnemyFOV>();
         PerseguicaoSom = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+        EOD = GameObject.FindGameObjectWithTag("EnemyOpenDoor").GetComponent<EnemyOpenDoor>();
+
+        EOD.isChasing = true;
 
         //sounds = GameObject.FindGameObjectWithTag("MainCamera").GetComponents<AudioSource>();
-     //   stopPerseguir = sounds[1];//era 1
+        //   stopPerseguir = sounds[1];//era 1
 
         PerseguicaoSom.Play();
         PerseguicaoSom.volume = 1f;
@@ -50,6 +55,7 @@ public class PerseguirBehaviour : StateMachineBehaviour
         Debug.Log("Parando corotina");
         fov.StopTime();
         fov.isPerseguindo = false;
+        EOD.isChasing = false;
         //patrulha.DiminuirVolume(); //Função que irá diminuir o volume do som e então parar
         patrulha.FimPerseguir();//Função que irá esperar a musica principal terminar e então finalizar com a musica
                                 //de encerramento

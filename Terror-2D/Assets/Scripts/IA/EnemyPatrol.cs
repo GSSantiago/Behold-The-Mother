@@ -25,12 +25,13 @@ public class EnemyPatrol : MonoBehaviour
 
 
 
-    Seeker seeker;
+    public Seeker seeker;
     //DECLARAÇÃO DE VARIAVEIS
     bool isRandomfinish;
     bool isMoving;
     [HideInInspector] public bool isInside = false;
     [HideInInspector] public bool isChecking = false;
+    [HideInInspector] public bool isOpen = false;
 
     //Inicialização de lista
     List<int> ways = new List<int>();
@@ -58,7 +59,8 @@ public class EnemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.U))
+            scan();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,10 +75,12 @@ public class EnemyPatrol : MonoBehaviour
     public float aceleração = 0;
     public void perseguir()
     {
-        seeker.StartPath(transform.position, player.position);
-        if(InimigoIA.maxSpeed<4)
-            InimigoIA.maxSpeed +=Time.deltaTime * aceleração/10 ;
-
+        if (!isOpen)
+        {
+            seeker.StartPath(transform.position, player.position);
+            if (InimigoIA.maxSpeed < 4)
+                InimigoIA.maxSpeed += Time.deltaTime * aceleração / 10;
+        }
     }
 
     public void scan()
@@ -142,8 +146,8 @@ public class EnemyPatrol : MonoBehaviour
 
         while (isChecking)
         {
-            if(playerMov.isRunning)
-               seeker.StartPath(transform.position, player.position);
+            if (playerMov.isRunning)
+                seeker.StartPath(transform.position, player.position);
             yield return null;
         }
         yield return null;
