@@ -8,10 +8,10 @@ public class DialogManager : MonoBehaviour
     [SerializeField] GameObject dialogBox;
     [SerializeField] Text dialogText;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Animator TalkAnim;
 
 
     [SerializeField] int lettersPerSecond;
-   // public Animator anim;
 
     Dialog dialog;
 
@@ -37,6 +37,22 @@ public class DialogManager : MonoBehaviour
        
         StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
+
+    public void ShowDialog(Dialog dialog, GameObject characterBox, Text texto,Animator TalkAnim)
+    {
+        this.dialogBox = characterBox;
+        this.dialogText = texto;
+        this.dialog = dialog;
+        this.TalkAnim = TalkAnim;
+        dialogBox.SetActive(true);
+
+        //Desabilitando movimento do jogador
+        playerMovement.Idle();
+        playerMovement.enabled = false;
+
+        StartCoroutine(TypeDialog(dialog.Lines[0]));
+    }
+
     //antes era handleupdate
     void Update()
     {
@@ -63,7 +79,7 @@ public class DialogManager : MonoBehaviour
     public IEnumerator TypeDialog(string line)
     {
         isTyping = true;
-      //  anim.SetBool("Istalking", true);
+        TalkAnim.SetBool("IsTalk", true);
         dialogText.text = "";
         foreach (var letter in line.ToCharArray())
         {
@@ -71,7 +87,7 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds(1f / lettersPerSecond);
         }
         isTyping = false;
-       // anim.SetBool("Istalking", false);
+        TalkAnim.SetBool("IsTalk", false);
 
     }
 }

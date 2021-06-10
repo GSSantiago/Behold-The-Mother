@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -7258447933056654094
     second: idle_L
+  - first:
+      213: 3828886905820945735
+    second: Talk_L
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -353,7 +356,7 @@ TextureImporter:
         width: 15
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -361,6 +364,27 @@ TextureImporter:
       bones: []
       spriteID: 2f46d71df00d44b90800000000000000
       internalID: -7258447933056654094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Talk_L
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 291
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d1a92ca50f22530800000000000000
+      internalID: 3828886905820945735
       vertices: []
       indices: 
       edges: []

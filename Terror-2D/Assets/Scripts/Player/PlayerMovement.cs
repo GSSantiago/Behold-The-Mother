@@ -7,10 +7,11 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 5f;
     public float normalSpeed = 5f;
     public float runSpeed = 8f;
-    [SerializeField] Rigidbody2D rb;
+    public Rigidbody2D rb;
     public Animator anim;
     public bool changeControl;
     public bool isRunning;
+    public bool isIdle;
 
     [SerializeField] StaminaBar staminabar;
 
@@ -32,15 +33,12 @@ public class PlayerMovement : MonoBehaviour
         movement.x = 0f;
         movement.y = 0f;
 
-        //Verificação se os controles devem ser mudados devido a sanidade baixa
-        if (!changeControl)
-            normalControl();
-        else
-            twistedControl();
+        normalControl();
+        
 
         moveDir = new Vector3(movement.x, movement.y).normalized;
 
-        bool isIdle = movement.x == 0 && movement.y == 0;
+        isIdle = movement.x == 0 && movement.y == 0;
 
         if (isIdle)
         {
