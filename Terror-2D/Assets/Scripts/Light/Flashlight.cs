@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using Pathfinding;
+
 public class Flashlight : MonoBehaviour
 {
     int mode = 0;
@@ -9,12 +11,40 @@ public class Flashlight : MonoBehaviour
     [HideInInspector]public int i = 0;
     public float timeCounter;
     public float intensityCounter;
-    public bool flicker = false;
+    public float length = 12f;
+    [HideInInspector] public bool flicker = false;
     public GameObject player;
     public PlayerMovement PlayerMove;
     [HideInInspector] public Vector3 pos;
+    public LayerMask layerMask;
+    public AIPath InimigoIA;
 
-    // Start is called before the first frame update
+    //encontrando a posicao correta do mouse
+    //meio caótico e eu n sei bem como funciona, mas funciona entao to feliz
+    public static Vector3 MouseWorldPos()
+    {
+        Vector3 vec = MouseWorldPosWithZ(Input.mousePosition, Camera.main); ;
+        vec.z = 0f;
+        return vec;
+    }
+
+    public static Vector3 MouseWorldPosWithZ()
+    {
+        return MouseWorldPosWithZ(Input.mousePosition, Camera.main);
+    }
+
+    public static Vector3 MouseWorldPosWithZ(Camera worldCamera)
+    {
+        return MouseWorldPosWithZ(Input.mousePosition, worldCamera);
+    }
+
+    public static Vector3 MouseWorldPosWithZ(Vector3 ScreenPosition, Camera worldCamera)
+    {
+        Vector3 worldPos = worldCamera.ScreenToWorldPoint(ScreenPosition);
+        return worldPos;
+    }
+
+
     void Start()
     {
         //player = GameObject.Find("Player");
@@ -23,43 +53,56 @@ public class Flashlight : MonoBehaviour
         luz.pointLightOuterAngle = 360;
         luz.pointLightInnerAngle = 360;
         luz.pointLightOuterRadius = 4.8f;
-
-
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //inputs
-        bool tecla_w = Input.GetKey(KeyCode.W);
-        bool tecla_a = Input.GetKey(KeyCode.A);
-        bool tecla_s = Input.GetKey(KeyCode.S);
-        bool tecla_d = Input.GetKey(KeyCode.D);
+        //luz em modo padrao
+        luz.pointLightOuterAngle = 360;
+        luz.pointLightInnerAngle = 360;
+        luz.pointLightInnerRadius = 1.2f;
+        luz.pointLightOuterRadius = 4.8f;
+        mode = 0;
+        PlayerMove.normalSpeed = 5f;
+        PlayerMove.runSpeed = 8f;
 
-        //encontra a direção do mouse na tela
+        //encontra a direção do mouse na tela para rotacionar a luz
+        //mas e um codigo diferente do raycast
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         diff.Normalize();
         float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
-        /*if(Input.GetKeyDown("f") && mode==0)
+        //mantem a velocidade do inimigo padrao
+        InimigoIA.maxSpeed = 2f;
+
+        while(Input.GetKey(KeyCode.Mouse0) && mode==0)
         {
-            mode0();
+            //entra no modo alternativo de luz
+            luz.pointLightOuterAngle = 80;
+            luz.pointLightInnerAngle = 20;
+            luz.pointLightInnerRadius = 2f;
+            luz.pointLightOuterRadius = 12f;
+            luz.intensity = 2f;
+
+            //direciona o feixe
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationZ - 90f);
+            PlayerMove.normalSpeed = 3f;
+            PlayerMove.runSpeed = 6f;
             mode = 1;
+
+            //cria o raycast e detecta a colisao
+            Vector3 mousepos = MouseWorldPos();
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, mousepos, length, layerMask, -100f, 100f);
+            Debug.DrawRay(luz.transform.position, mousepos, Color.red);
+            if(hit.collider != null)
+            {
+                //diminui a velocidade do inimigo
+                InimigoIA.maxSpeed = 0.5f;
+                Debug.Log("Luz no monstro!!!!!");
+            }
         }
 
-        else if(Input.GetKeyDown("f") && mode==1)
-        {
-            mode1();
-            mode = 0;
-        }*/
-
-        if(mode == 1)
-        {
-            //aponta a luz para onde o mouse está
-            transform.rotation = Quaternion.Euler(0f, 0f, rotationZ-90f);
-        }
-
-        if(flicker == false) {
+        if(flicker == false && mode == 0) {
             StartCoroutine(lightFlicker());
         }
         if (gameObject.name == "Point Light 2D") {
@@ -99,22 +142,6 @@ public class Flashlight : MonoBehaviour
                 luz.transform.position = pos;
             }
         }
-    }
-
-    void mode0()
-    {
-        luz.pointLightOuterAngle = 95;
-        luz.pointLightInnerAngle = 30;
-        luz.pointLightInnerRadius = 2f;
-        luz.pointLightOuterRadius = 9f;
-    }
-
-    void mode1()
-    {
-        luz.pointLightOuterAngle = 360;
-        luz.pointLightInnerAngle = 360;
-        luz.pointLightInnerRadius = 1.2f;
-        luz.pointLightOuterRadius = 4.8f;
     }
 
     IEnumerator lightFlicker()
