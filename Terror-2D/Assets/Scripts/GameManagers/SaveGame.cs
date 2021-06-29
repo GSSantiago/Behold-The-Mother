@@ -7,7 +7,7 @@ public class SaveGame : MonoBehaviour
     public Collider2D collider;
     public SanityScript sanity;
     public SanityControl sanityControl;
-
+    public ParticleSystem healParticle;
     public GameObject dialogBox;
     public DialogManager dialogM;
 
@@ -34,6 +34,7 @@ public class SaveGame : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !dialogBox.activeSelf)
             {
+                healParticle.Play();
                 DialogManager.Instance.ShowDialog(dialog);
                 sanity.sanity_value = 100;
                 sanityControl.isSanityLow75 = true;
