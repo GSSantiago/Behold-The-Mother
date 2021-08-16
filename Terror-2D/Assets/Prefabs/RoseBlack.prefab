@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3027616658906293455}
   - component: {fileID: 2024069341902055626}
   - component: {fileID: 9124037519364769937}
-  m_Layer: 0
+  - component: {fileID: 8227181781493475752}
+  m_Layer: 8
   m_Name: RoseBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,13 +114,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007250434908151582}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad20367af741aaa429cdb89be33fa4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 5
-  runSpeed: 8
+  normalSpeed: 3
+  runSpeed: 5
   anim: {fileID: 3027616658906293455}
   isRunning: 0
   moveDir: {x: 0, y: 0}
@@ -153,6 +154,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0124247, y: 0.4163839}
   m_EdgeRadius: 0
+--- !u!50 &8227181781493475752
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007250434908151582}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1555162274799089848
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +187,7 @@ GameObject:
   - component: {fileID: 2583767646401525511}
   - component: {fileID: 2574380341136132338}
   - component: {fileID: 3359505318875878994}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,8 +285,8 @@ GameObject:
   - component: {fileID: 7631776022982351858}
   - component: {fileID: 345681693700501265}
   - component: {fileID: 1985247795776825234}
-  m_Layer: 5
-  m_Name: DialogBox
+  m_Layer: 8
+  m_Name: RoseDialogBox
   m_TagString: DialogBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +362,7 @@ GameObject:
   - component: {fileID: 5500056901984068052}
   - component: {fileID: 2234151279891222878}
   - component: {fileID: 7591680902328594928}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Point Light 2D
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -418,10 +440,15 @@ MonoBehaviour:
   i: 0
   timeCounter: 0
   intensityCounter: 0
+  length: 12
   flicker: 0
   player: {fileID: 1007250434908151582}
   PlayerMove: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  InimigoIA: {fileID: 0}
 --- !u!61 &2234151279891222878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -473,7 +500,7 @@ GameObject:
   - component: {fileID: 5632479154509635730}
   - component: {fileID: 7908546791262688}
   - component: {fileID: 1166793298950322358}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: DialogText
   m_Icon: {fileID: 0}

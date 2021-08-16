@@ -442,7 +442,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a25ccebde368b434d802f58fa8f66e97, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1898,6 +1898,7 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  audioMixer: {fileID: 0}
 --- !u!1 &378050005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2558,7 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   playerMovement: {fileID: 0}
+  TalkAnim: {fileID: 0}
   lettersPerSecond: 45
   isFinished: 0
 --- !u!1 &848551666

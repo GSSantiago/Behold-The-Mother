@@ -10,6 +10,7 @@ public class Iscoming : MonoBehaviour
     public bool FromEntranceHall=false;
     public bool FromWestWing=false;
     public bool FromEastWing=false;
+    public bool FromUpperWestWing = false;
 
     public bool ispickaxePicked = false;
     public bool isKeyPicked = false;
@@ -76,5 +77,13 @@ public class Iscoming : MonoBehaviour
         FromEntranceHall = false;
         FromWestWing = false;
         FromEastWing = true;
+    }
+
+    public void fromUpperWestWing()
+    {
+        FromEntranceHall = false;
+        FromWestWing = false;
+        FromEastWing = false;
+        FromUpperWestWing = true;
     }
 }

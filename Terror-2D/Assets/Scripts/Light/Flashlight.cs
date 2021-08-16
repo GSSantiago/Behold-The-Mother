@@ -73,7 +73,8 @@ public class Flashlight : MonoBehaviour
         float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
         //mantem a velocidade do inimigo padrao
-        InimigoIA.maxSpeed = 2f;
+        if(InimigoIA!=null)
+            InimigoIA.maxSpeed = 2f;
 
         while(Input.GetKey(KeyCode.Mouse0) && mode==0)
         {
