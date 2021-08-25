@@ -10,6 +10,7 @@ public class SaveGame : MonoBehaviour
     public ParticleSystem healParticle;
     public GameObject dialogBox;
     public DialogManager dialogM;
+    public PlayerMovement playerMov;
 
     [SerializeField] Dialog dialog;
 
@@ -42,8 +43,9 @@ public class SaveGame : MonoBehaviour
                 sanityControl.ambience.pitch = 0.43f;
                 sanityControl.allNormal();
             }
-
+            playerMov.enabled = true;
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
