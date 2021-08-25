@@ -11,6 +11,7 @@ public class Iscoming : MonoBehaviour
     public bool FromWestWing=false;
     public bool FromEastWing=false;
     public bool FromUpperWestWing = false;
+    public bool FromMasterStudyUp = false;
 
     public bool ispickaxePicked = false;
     public bool isKeyPicked = false;
@@ -19,9 +20,15 @@ public class Iscoming : MonoBehaviour
     public bool PickaxeDisplay = false;
     public bool KeyDisplay = false;
 
+    public bool isFirstcutscenePlayed = false;
+    public bool isLastcutscenePlayed = false;
+
     [SerializeField] PauseScript pause;
     [SerializeField] Image key;
     [SerializeField] Image pickaxe;
+    [SerializeField] GameObject cutscene;
+    [SerializeField] GameObject RoseBlack;
+   
 
     private Scene scene;
     private string sceneName;
@@ -42,6 +49,17 @@ public class Iscoming : MonoBehaviour
 
         if (sceneName == "Entrance Hall" && !ambienceSound.isPlaying)
             ambienceSound.Play();
+
+        cutscene = GameObject.Find("TimelineManager");
+        RoseBlack = GameObject.Find("RoseBlack");
+
+        if (isFirstcutscenePlayed)
+        {
+            Destroy(cutscene);
+            Destroy(RoseBlack);
+
+    
+        }
     }
     // Update is called once per frame
     void Update()
@@ -52,17 +70,17 @@ public class Iscoming : MonoBehaviour
 
     }
 
-    void iscoming()
-    {
-     
-    }
+   
 
     public void fromEntranceHall()
     {
         FromEntranceHall = true;
         FromWestWing = false;
         FromEastWing = false;
-        
+        FromMasterStudyUp = false;
+        FromUpperWestWing = false;
+
+
     }
 
     public void fromWestWing()
@@ -70,6 +88,7 @@ public class Iscoming : MonoBehaviour
         FromEntranceHall = false;
         FromWestWing = true;
         FromEastWing = false;
+        FromMasterStudyUp = false;
     }
 
     public void fromEastWing()
@@ -77,6 +96,7 @@ public class Iscoming : MonoBehaviour
         FromEntranceHall = false;
         FromWestWing = false;
         FromEastWing = true;
+        FromMasterStudyUp = false;
     }
 
     public void fromUpperWestWing()
@@ -85,5 +105,16 @@ public class Iscoming : MonoBehaviour
         FromWestWing = false;
         FromEastWing = false;
         FromUpperWestWing = true;
+        FromMasterStudyUp = false;
     }
+
+    public void fromMasterStudyUp()
+    {
+        FromEntranceHall = false;
+        FromWestWing = false;
+        FromEastWing = false;
+        FromUpperWestWing = false;
+        FromMasterStudyUp = true;
+    }
+ 
 }

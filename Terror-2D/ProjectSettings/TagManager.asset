@@ -24,6 +24,7 @@ TagManager:
   - DialogText
   - EnemyOpenDoor
   - EC
+  - Cutscene
   layers:
   - Default
   - TransparentFX

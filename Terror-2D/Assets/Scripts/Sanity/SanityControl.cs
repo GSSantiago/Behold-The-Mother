@@ -49,51 +49,48 @@ public class SanityControl : MonoBehaviour
 
     void Start()
     {
-        /*StartCoroutine(efeitos());
-        StartCoroutine(crazyCamera());
-        StartCoroutine(InvertedCamera());*/
+      
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
-        //5 É uma distancia boa
-        if (sceneName == "West Wing")
+        if (enemy != null)
         {
+            //5 É uma distancia boa
+            if (sceneName == "West Wing")
+            {
 
-            if (Vector3.Distance(Player.position, enemy.position) > 5)
-                CircleSanity.SetActive(false);
-            else
-                CircleSanity.SetActive(true);
+                if (Vector3.Distance(Player.position, enemy.position) > 5)
+                    CircleSanity.SetActive(false);
+                else
+                    CircleSanity.SetActive(true);
 
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            ShowDialog(dialog);
-        }
+          
 
-        if (sanity.sanity_value < 75 && isSanityLow75)
-        {
-            StartCoroutine(voicesSound());
-            ambience.pitch = 1.1f;
-            isSanityLow75 = false;
-        }
+            if (sanity.sanity_value < 75 && isSanityLow75)
+            {
+                StartCoroutine(voicesSound());
+                ambience.pitch = 1.1f;
+                isSanityLow75 = false;
+            }
 
-        if (sanity.sanity_value < 50 && isSanityLow50)
-        {
-            StartCoroutine(creppyvoices());
-            isSanityLow50 = false;
-        }
-        if (sanity.sanity_value < 25 && isSanityLow25)
-        {
-            StartCoroutine(Insanephrases());
-            isSanityLow25 = false;
-        }
+            if (sanity.sanity_value < 50 && isSanityLow50)
+            {
+                StartCoroutine(creppyvoices());
+                isSanityLow50 = false;
+            }
+            if (sanity.sanity_value < 25 && isSanityLow25)
+            {
+                StartCoroutine(Insanephrases());
+                isSanityLow25 = false;
+            }
 
-
+ 
     }
 
     IEnumerator voicesSound()
