@@ -359,8 +359,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8457351260144293359}
   - component: {fileID: 8475411382008468172}
-  - component: {fileID: 5500056901984068052}
   - component: {fileID: 2234151279891222878}
+  - component: {fileID: 2221663851742494622}
   - component: {fileID: 7591680902328594928}
   m_Layer: 8
   m_Name: Point Light 2D
@@ -424,31 +424,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &5500056901984068052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5239824794343906677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54784c99b455cc94484b0b957547911e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  luz: {fileID: 8475411382008468172}
-  i: 0
-  timeCounter: 0
-  intensityCounter: 0
-  length: 12
-  flicker: 0
-  player: {fileID: 1007250434908151582}
-  PlayerMove: {fileID: 0}
-  pos: {x: 0, y: 0, z: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  InimigoIA: {fileID: 0}
 --- !u!61 &2234151279891222878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -475,6 +450,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1.8}
   m_EdgeRadius: 0
+--- !u!114 &2221663851742494622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239824794343906677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a5ddbaa305e5946969c3d788c06058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  luz: {fileID: 8475411382008468172}
+  i: 0
+  timeCounter: 0
+  intensityCounter: 0
+  flicker: 0
 --- !u!114 &7591680902328594928
 MonoBehaviour:
   m_ObjectHideFlags: 0
