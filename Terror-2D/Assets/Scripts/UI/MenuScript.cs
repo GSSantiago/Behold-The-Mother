@@ -86,7 +86,7 @@ public class MenuScript : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("MenuPrincipal");
+        SceneManager.LoadScene("Upper West Wing");
     }
 
     public void Quit()

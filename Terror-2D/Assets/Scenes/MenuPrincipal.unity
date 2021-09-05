@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4276,8 +4276,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Use as teclas W, A, S e D para movimentar o personagem\n\nUse SHIFT para
-    correr\n\nUse E para interagir com objetos\n\nUse o Bot\xE3o do mouse para ativar
-    a lanterna\n\nUse ESC para pausar o jogo"
+    correr\n\nUse E para interagir com objetos e avan\xE7ar o texto\n\nUse o Bot\xE3o
+    do mouse para ativar a lanterna\n\nUse ESC para pausar o jogo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dc1c62b8da86634093a2d196f20c016, type: 2}
   m_sharedMaterial: {fileID: 1673218411059826730, guid: 6dc1c62b8da86634093a2d196f20c016,
